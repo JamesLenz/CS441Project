@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:cs441_project" x:Class="cs441_project.cs441_projectPage">
+	<StackLayout
+        Spacing="3"
+        BackgroundColor="BlanchedAlmond">
+        <Label
+            Text="ClassyApp"
+            HorizontalOptions="Center"
+            FontSize="80"
+            FontAttributes="Italic"
+            TextColor="Black"
+            Margin="0,50,0,0">
+            <Label.FontFamily>
+                <OnPlatform x:TypeArguments="x:String">
+                    <OnPlatform.iOS>Druk</OnPlatform.iOS>
+                    <OnPlatform.Android>Druk-Heavy-Web.ttf#Druk Heavy Web</OnPlatform.Android>
+                </OnPlatform>
+            </Label.FontFamily>
+        </Label>
+        <Label
+            Text="CLOSER CLASSROOMS"
+            FontSize="16"
+            TextColor="Black"
+            Margin="75,-15,0,0">
+            <Label.FontFamily>
+                <OnPlatform x:TypeArguments="x:String">
+                    <OnPlatform.iOS>DINCondensed-Bold</OnPlatform.iOS>
+                    <OnPlatform.Android>DIN-Condensed-Bold.ttf#DIN Condensed Bold</OnPlatform.Android>
+                </OnPlatform>
+            </Label.FontFamily>
+        </Label>
+        <Entry
+            Placeholder="Username"
+            HeightRequest="50"
+            FontSize="20"
+            Margin="25,100,25,0"
+            Keyboard="Default"/>
+        <Entry
+            Placeholder="Password"
+            HeightRequest="50"
+            FontSize="20"
+            Margin="25,0,25,0"
+            Keyboard="Default"
+            IsPassword="true"/>
+        <Button
+            Text="Login"
+            Margin="25,15,25,0"
+            HeightRequest="50"
+            FontSize="25"
+            TextColor="White"
+            BackgroundColor="Orange"
+            Clicked="Login_Clicked"/>
+        <Button
+            Text="Create new account"
+            BackgroundColor="Transparent"
+            HorizontalOptions="CenterAndExpand"
+            BorderWidth="0"
+            BorderColor="Transparent"
+            TextColor="#0066ff"
+            Clicked="NewAccount_Clicked"/>
+    </StackLayout>
+</ContentPage>
