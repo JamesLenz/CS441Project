@@ -3,4 +3,10 @@
 	<uses-sdk android:minSdkVersion="15" />
 	<application android:label="cs441_project">
 	</application>
+    
+	<!--Adjust screen scroll position when keyboard appears to prevent object from being under keyboard-->
+	<activity
+        android:windowSoftInputMode="adjustPan"
+        android:name=".MainActivity">
+	</activity>
 </manifest>

@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace cs441_project
 {
-    public partial class LoginPage : ContentPage
+    public partial class HomePage : ContentPage
     {
-        public LoginPage()
+        public HomePage()
         {
             InitializeComponent();
         }
