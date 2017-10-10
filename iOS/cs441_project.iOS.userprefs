@@ -1,0 +1,25 @@
+﻿<Properties StartupConfiguration="{0126277C-C1E4-4B1A-8D0D-704DE36CD2F7}|Default">
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="cs441_project.iOS" expanded="True">
+            <Node name="cs441_project.iOS" expanded="True">
+              <Node name="References" expanded="True">
+                <Node name="System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" selected="True" />
+              </Node>
+              <Node name="Packages" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.cs441__project.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget." />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
