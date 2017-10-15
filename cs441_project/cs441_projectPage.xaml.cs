@@ -6,32 +6,13 @@ using System;
 
 namespace cs441_project
 {
-    //todo: should add to a file for http items
-	public class ValiddateUserItem // an item containing data relevant to a certain task
-	{
-		public readonly string Command = "VALIDATE_USER"; //every item must have a "Command" data member
-		public string Email { get; set; }
-		public string Password { get; set; }
-	}
-
-	public class ForgotPasswordItem
-	{
-		public readonly string Command = "FORGOT_PASSWORD";
-		public string Email { get; set; }
-	}
-
     public partial class cs441_projectPage : ContentPage
     {
-        private HttpClient client; //todo: should move to global object accross all pages?
-
 		public cs441_projectPage()
         {
 			//set the back button's title on the next page
 			//only works in constructor, which is unfortunate
 			//NavigationPage.SetBackButtonTitle(this, "Sign Out");
-
-			client = new HttpClient();
-			client.MaxResponseContentBufferSize = 256000; //256KB
 
 			NavigationPage.SetHasNavigationBar(this, false); //remove navigation bar for sign in page
             InitializeComponent();
@@ -45,47 +26,62 @@ namespace cs441_project
 				return;
 			}
             if (Password_Entry.Text == null || Password_Entry.Text == "")
-			{ //if entry box was not touched (null) or is touched but empty ("")
-				await DisplayAlert("Error: Password", "Please enter a password", "OK");
-				return;
-			}
+            { //if entry box was not touched (null) or is touched but empty ("")
+                await DisplayAlert("Error: Password", "Please enter a password", "OK");
+                return;
+            }
 
-			// RestUrl = http://developer.xamarin.com:8081/api/todoitems/
-			var uri = new Uri("http://54.193.30.236/index.py");
-
-            var item = new ValiddateUserItem();
+            //create the item we want to send
+            var item = new ValidateUserItem();
 			item.Email = Email_Entry.Text;
 			item.Password = Password_Entry.Text;
 
-			var json = JsonConvert.SerializeObject(item);
-			var content = new StringContent(json, Encoding.UTF8, "application/json"); //StringContent contains http headers
+            //set ip address to connect to
+            var uri = new Uri("http://54.193.30.236/index.py");
 
-			var response = await client.PostAsync(uri, content); //post
-			if (response.IsSuccessStatusCode)
-			{ //success
-                //todo: success just means there was no connection problems, but
-                //we need to handle/display errors the server gives back to us
+            //serialize object and make it ready for sending over the internet
+            var json = JsonConvert.SerializeObject(item);
+            var content = new StringContent(json, Encoding.UTF8, "application/json"); //StringContent contains http headers
 
-				var temp = await response.Content.ReadAsStringAsync();
-				testLabel.Text = temp;
+            //wait for response, then handle it
+			var response = await App.client.PostAsync(uri, content); //post
+            if (response.IsSuccessStatusCode)
+            { //success
+                //get our JSON response and convert it to a ResponseItem object
+                ResponseItem resItem = new ResponseItem();
+                try
+                {
+                    resItem = JsonConvert.DeserializeObject<ResponseItem>(await response.Content.ReadAsStringAsync());
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Unexpected Error", ex.Message, "OK");
+                }
 
-                //todo:if no errors, then go to next page
-                    //remove this page from navigation stack,
+                //if no errors, do something
+                if (resItem.Success)
+                {
+                    testLabel.Text = resItem.Success.ToString();
+                    //todo:remove this page from navigation stack,
                     //   back button should not work because
                     //   there should be a dedicated log off button
-                    //Navigation.PushAsync(new HomePage()); //goto home page
-                //todo:else, display error
-                    
-			}
-			else
-			{ //error
-				testLabel.Text = response.ToString();
-			}
+                    await Navigation.PushAsync(new HomePage()); //goto home page
+                }
+                else //else, display error
+                {
+                    await DisplayAlert("Error", resItem.Response, "OK");
+                }
+            }
+            else
+            { //error
+                await DisplayAlert("Unexpected Error", response.ToString(), "OK");
+                return;
+            }
         }
 
-		void NewAccount_Clicked(object sender, System.EventArgs e)
+		async void NewAccount_Clicked(object sender, System.EventArgs e)
 		{
-            Navigation.PushAsync(new NewAccountPage()); //goto the new account creation page
+            await Navigation.PushAsync(new NewAccountPage()); //goto the new account creation page
         }
 
         async void ForgotPassword_Clicked(object sender, System.EventArgs e)
@@ -98,36 +94,45 @@ namespace cs441_project
 
             //ask user before sending email
             var answer = await DisplayAlert("Forgot Password?", "Would you like us to send your password to the email provided?", "Yes", "No");
-
-            if (answer == false)
+            if (answer == false) //user changed their mind
                 return;
-            
-			//send request for "forgot password" to server
-			//server will send back a response if that email exists
-			//if the email does exist, the server will send the email
 
-			// RestUrl = http://developer.xamarin.com:8081/api/todoitems/
-			var uri = new Uri("http://54.193.30.236/index.py");
-
+            //create the item we want to send
 			var item = new ForgotPasswordItem();
 			item.Email = Email_Entry.Text;
-            
+
+            //set ip address to connect to
+            var uri = new Uri("http://54.193.30.236/index.py");
+
+            //serialize object and make it ready for sending over the internet
 			var json = JsonConvert.SerializeObject(item);
 			var content = new StringContent(json, Encoding.UTF8, "application/json"); //StringContent contains http headers
 
-			var response = await client.PostAsync(uri, content); //post
+            //wait for response, then handle it
+			var response = await App.client.PostAsync(uri, content); //post
 			if (response.IsSuccessStatusCode)
 			{ //success
-			  //todo: success just means there was no connection problems, but
-			  //we need to handle/display errors the server gives back to us
+                //get our JSON response and convert it to a ResponseItem object
+                ResponseItem resItem = new ResponseItem();
+                try
+                {
+                    resItem = JsonConvert.DeserializeObject<ResponseItem>(await response.Content.ReadAsStringAsync());
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Unexpected Error", ex.Message, "OK");
+                }
 
-				var temp = await response.Content.ReadAsStringAsync();
-                testLabel.Text = temp;
-
-                //todo:if no errors, then display confirmation
-                    
-                //todo:else, display error
-                    
+                //if no errors, do something
+                if (resItem.Success)
+                {
+                    //todo:alert successful?
+                    testLabel.Text = resItem.Success.ToString();
+                }
+                else //else, display error
+                {
+                    await DisplayAlert("Error", resItem.Response, "OK");
+                }
 			}
 			else
 			{ //error

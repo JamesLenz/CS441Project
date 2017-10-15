@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:cs441_project" x:Class="cs441_project.cs441_projectPage">
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:cs441_project" 
+    x:Class="cs441_project.cs441_projectPage">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ClickableTextButtonStyle" TargetType="Button">
+                <Setter Property="TextColor"         Value="#0066ff"/>
+                <Setter Property="BackgroundColor"   Value="Transparent"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="BorderColor"       Value="Transparent"/>
+            </Style>
+            <Style x:Key="EntryBoxStyle" TargetType="Entry">
+                <Setter Property="FontSize"      Value="20"/>
+                <Setter Property="HeightRequest" Value="50"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ScrollView>
         <StackLayout
             Spacing="3"
@@ -34,16 +54,14 @@
             <Label x:Name="testLabel" Text="test" FontSize="10"/>
             <Entry
                 x:Name="Email_Entry"
+                Style="{StaticResource EntryBoxStyle}"
                 Placeholder="Email"
-                HeightRequest="50"
-                FontSize="20"
                 Margin="25,100,25,0"
-                Keyboard="Default"/>
+                Keyboard="Email"/>
             <Entry
                 x:Name="Password_Entry"
+                Style="{StaticResource EntryBoxStyle}"
                 Placeholder="Password"
-                HeightRequest="50"
-                FontSize="20"
                 Margin="25,10,25,0"
                 Keyboard="Default"
                 IsPassword="true"/>
@@ -60,18 +78,11 @@
                 Margin="20,10,20,0">
                 <Button
                     Text="Forgot Password?"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="CenterAndExpand"
-                    BorderColor="Transparent"
-                    TextColor="#0066ff"
+                    Style="{StaticResource ClickableTextButtonStyle}"
                     Clicked="ForgotPassword_Clicked"/>
                 <Button
                     Text="New Here? Sign Up!"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="CenterAndExpand"
-                    BorderColor="Transparent"
-                    HeightRequest="20"
-                    TextColor="#0066ff"
+                    Style="{StaticResource ClickableTextButtonStyle}"
                     Clicked="NewAccount_Clicked"/>
             </StackLayout>
         </StackLayout>

@@ -6,24 +6,10 @@ using System.Text;
 
 namespace cs441_project
 {
-    //todo: should add to a file for http items
-	public class AddUserItem // an item containing data relevant to a certain task
-	{
-        public readonly string Command = "ADD_USER"; //every item must have a "Command" data member
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-	}
-
     public partial class NewAccountPage : ContentPage
     {
-        private HttpClient client; //todo: should move to global object accross all pages?
-
         public NewAccountPage()
         {
-			client = new HttpClient();
-			client.MaxResponseContentBufferSize = 256000; //256KB
-
             Title = "New Account";
             InitializeComponent();
         }
@@ -47,38 +33,53 @@ namespace cs441_project
 				return;
 			}
 
-            // RestUrl = http://developer.xamarin.com:8081/api/todoitems/
-            var uri = new Uri("http://54.193.30.236/index.py");
-
+            //create item we want to send
 			var item = new AddUserItem();
             item.Name = Name_Entry.Text;
             item.Email = Email_Entry.Text;
             item.Password = Password_Entry.Text;
 
+            //set ip address to connect to
+            var uri = new Uri("http://54.193.30.236/index.py");
+
+            //serialize object and make it ready for sending over the internet
             var json = JsonConvert.SerializeObject(item);
             var content = new StringContent(json, Encoding.UTF8, "application/json"); //StringContent contains http headers
 
-            var response = await client.PostAsync(uri, content); //post
-			if (response.IsSuccessStatusCode)
-			{ //success
-                //todo: success just means there was no connection problems, but
-			    //we need to handle/display errors the server gives back to us
-				
-                var temp = await response.Content.ReadAsStringAsync();
-                testLabel.Text = temp;
+            //wait for response, then handle it
+            var response = await App.client.PostAsync(uri, content); //post
+            if (response.IsSuccessStatusCode)
+            { //success
+                //get our JSON response and convert it to a ResponseItem object
+                ResponseItem resItem = new ResponseItem();
+                try
+                {
+                    resItem = JsonConvert.DeserializeObject<ResponseItem>(await response.Content.ReadAsStringAsync());
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Unexpected Error", ex.Message + "...\n..." + response.ToString(), "OK");
+                }
 
-                //todo:if no errors, display confirmation
+                //if no errors, do something
+                if (resItem.Success)
+                {
+                    testLabel.Text = resItem.Success.ToString();
+                    //todo:if no errors, display confirmation
                     //remove this page and the login page from the navigation stack,
                     //  the back button should not go back and there should be a
                     //  dedicated log off button
                     //login the user as well
-                //todo:else, display error
-                    
+                }
+                else //else, display error
+                {
+                    await DisplayAlert("Error", resItem.Response, "OK");
+                }
             }
             else
             { //error
-				await DisplayAlert("Unexpected Error", response.ToString(), "OK");
-				return;
+                await DisplayAlert("Unexpected Error", response.ToString(), "OK");
+                return;
             }
         }
     }
