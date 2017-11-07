@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="cs441_project.TodoDetailsView">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Label Text="Name"/>
+            <Entry Text="{Binding Name, Mode=TwoWay}"/>
+            <Label Text="Notes"/>
+            <Entry Text="{Binding Notes, Mode=TwoWay}"/>
+            <Label Text="IsDone"/>
+            <Switch IsToggled="{Binding Done, Mode=TwoWay}"/>
+            <Label Text="Due Date"/>
+            <DatePicker x:Name=" DatePicker"></DatePicker>
+            <Label Text="Time"/>
+            <TimePicker x:Name="TimePicker"></TimePicker>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Save"/>
+                <Button Text="Delete"/>
+                <Button Text="Cancel" Clicked="OnCancel"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -3,8 +3,33 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="cs441_project.testPage2"
-    Title="Page 2">
-	<ContentPage.Content>
-        <Label Text="testPage 2"/>
-	</ContentPage.Content>
+    Title="Todo List"
+    BackgroundColor="BlanchedAlmond">
+
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Name="Add" Activated="OnAdd" Order="Primary" Priority="0" Icon="plus.ping"/>
+    </ContentPage.ToolbarItems>-->
+
+
+    <StackLayout>
+        <ListView x:Name="MainListView" ItemsSource="{Binding Items}" ItemSelected="OnSelect" HasUnevenRows="True" SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand"/>
+                                    <!--<Image Source="success.png" HorizontalOptions="End" IsVisible="{Binding Done}"/>-->
+                                </StackLayout>
+                                <label Text="{Binding Notes}" HorizontalOptions="StartAndExpand"/>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Clicked="TodoButton_OnClicked"
+                Text="New Task"/>
+    </StackLayout>
 </ContentPage>

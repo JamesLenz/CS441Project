@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
+
 using Xamarin.Forms;
 
 namespace cs441_project
@@ -11,5 +13,9 @@ namespace cs441_project
         {
             InitializeComponent();
         }
+        /*private void DatePicker_OnDateSelected(object sender, DateChangedEventArgs e)
+        {
+            MainLabel.Text = e.NewDate.ToString();
+        }*/
     }
 }

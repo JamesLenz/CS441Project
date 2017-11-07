@@ -5,6 +5,10 @@
     xmlns:local="clr-namespace:cs441_project"
     x:Class="cs441_project.HomePage">
 	<local:testPage1/>
-    <local:testPage2/>
+    <NavigationPage>
+        <x:Arguments>
+            <local:testPage2/>
+        </x:Arguments>
+    </NavigationPage>
     <local:testPage3/>
 </TabbedPage>
