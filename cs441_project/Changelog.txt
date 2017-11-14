@@ -1,4 +1,18 @@
-﻿(Oct 15, 2017)
+﻿()
+Client
+-Added alert for when successful recovery email sent
+
+
+Server
+
+
+
+
+
+
+
+
+(Oct 15, 2017)
 Client
 -Moved ValidateUserItem, ForgotPasswordItem, and AddUserItem to a new file "ServerItems.cs"
     -Added ResponseItem to this file, the standard object returned by server

@@ -65,6 +65,11 @@ namespace cs441_project
                     //todo:remove this page from navigation stack,
                     //   back button should not work because
                     //   there should be a dedicated log off button
+
+                    //login was successful, so store the successful login info for future use. (these variables are global to the app)
+                    App.userEmail = item.Email;
+                    App.userPassword = item.Password;
+
                     await Navigation.PushAsync(new HomePage()); //goto home page
                 }
                 else //else, display error
@@ -126,8 +131,7 @@ namespace cs441_project
                 //if no errors, do something
                 if (resItem.Success)
                 {
-                    //todo:alert successful?
-                    testLabel.Text = resItem.Success.ToString();
+                    await DisplayAlert("Email Sent", resItem.Response, "OK");
                 }
                 else //else, display error
                 {

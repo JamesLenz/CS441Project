@@ -11,8 +11,10 @@ namespace cs441_project
     {
         //public int ID { get; set; }
 
-        public string Name { get; set; }
-        public string Notes { get; set; }
+        public DateTime CreatedDateTime { get; set; }
+        public DateTime DueDateTime { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
         public bool Done { get; set; }
     }
 }

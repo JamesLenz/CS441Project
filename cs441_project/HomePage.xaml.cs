@@ -9,6 +9,7 @@ namespace cs441_project
     {
         public HomePage()
         {
+            NavigationPage.SetHasNavigationBar(this, true);
             InitializeComponent();
         }
     }

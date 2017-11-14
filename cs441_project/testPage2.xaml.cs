@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
 
@@ -7,28 +8,42 @@ namespace cs441_project
 {
     public partial class testPage2 : ContentPage
     {
+        private ObservableCollection<TodoItem> _ListViewItems = new ObservableCollection<TodoItem>();
+
         public testPage2()
         {
+            NavigationPage.SetHasNavigationBar(this, true);
+
             InitializeComponent();
 
-            NavigationPage.SetHasNavigationBar(this, true);
             BindingContext = this;
+
+            MainListView.ItemsSource = _ListViewItems;
         }
         async void TodoButton_OnClicked(object sender, System.EventArgs e)
         {
-            var answer = await DisplayAlert("New Item", "Create new task?", "Yes", "No");
-            if (answer == false)
-                return;
+            //var answer = await DisplayAlert("New Item", "Create new task?", "Yes", "No");
+            //if (answer == false)
+            //    return;
             var model = new TodoItem();
-            var view = new TodoDetailsView(model);
-            await Navigation.PushAsync(view, true);
+            await Navigation.PushAsync(new TodoDetailsView(model, true), true);
+
+            _ListViewItems.Add(model);
         }
 
-        async void OnSelect( object sender, SelectedItemChangedEventArgs e)
+        void OnSelect(object sender, SelectedItemChangedEventArgs e)
         {
             var model = (TodoItem)e.SelectedItem;
-            var view = new TodoDetailsView(model);
-            await Navigation.PushAsync(view, true);
+            ((ListView)sender).SelectedItem = null;
+            //await Navigation.PushAsync(new TodoDetailsView(model, false), true);
+        }
+
+        void OnDoneToggled(object sender, ToggledEventArgs e)
+        {
+            var model = (TodoItem)((Switch)sender).BindingContext;
+            model.Done = !model.Done;
+
+            //await Navigation.PushAsync(new TodoDetailsView(model, false), true);
         }
     }
 }

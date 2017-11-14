@@ -11,18 +11,72 @@
     </ContentPage.ToolbarItems>-->
 
 
-    <StackLayout>
-        <ListView x:Name="MainListView" ItemsSource="{Binding Items}" ItemSelected="OnSelect" HasUnevenRows="True" SeparatorVisibility="Default">
+    <StackLayout
+        Margin="0,0,0,0">
+        <ListView 
+            BackgroundColor="BlanchedAlmond"
+            x:Name="MainListView" 
+            SeparatorVisibility="None"
+            HasUnevenRows="true"
+            ItemSelected="OnSelect"
+            Margin="15,0,15,0">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
+                    <ViewCell x:Name="TodoItemCell">
                         <ViewCell.View>
-                            <StackLayout Orientation="Vertical">
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand"/>
-                                    <!--<Image Source="success.png" HorizontalOptions="End" IsVisible="{Binding Done}"/>-->
-                                </StackLayout>
-                                <label Text="{Binding Notes}" HorizontalOptions="StartAndExpand"/>
+                            <StackLayout>
+                                <Frame
+                                    BackgroundColor="White"
+                                    HasShadow="false"
+                                    Padding="5"
+                                    OutlineColor="#cccccc"
+                                    CornerRadius="0"
+                                    Margin="0,0,0,3">
+                                    <StackLayout>
+                                        <StackLayout
+                                            IsClippedToBounds="true"
+                                            MinimumHeightRequest="0">
+                                            <Label 
+                                                Text="{Binding DueDateTime, StringFormat='{}{0:\\D\\u\\e \\o\\n MMMM dd, yyyy a\\t h:mm tt}'}" 
+                                                FontSize="12"
+                                                TextColor="#888888"
+                                                Margin="0,0,0,0"/>
+                                            <Label
+                                                Text="{Binding Title}" 
+                                                FontAttributes="Bold"
+                                                Margin="0,-5,0,0"/>
+                                            <Label
+                                                Text="{Binding Description}" 
+                                                FontSize="12"
+                                                TextColor="Black"
+                                                Margin="0,-5,0,0"/>
+                                        </StackLayout>
+                                        <StackLayout 
+                                            Orientation="Horizontal" 
+                                            VerticalOptions="End">
+                                            <Label
+                                                VerticalOptions="Center"
+                                                TextColor="#888888"
+                                                Margin="0,0,0,-5"
+                                                Text="Done:"
+                                                FontSize="12"/>
+                                            <Switch
+                                                Scale="0.70"
+                                                Margin="-10,0,0,-5"
+                                                VerticalOptions="End"
+                                                IsToggled="{Binding Done}"
+                                                Toggled="OnDoneToggled"
+                                                BindingContext="{Binding Source={x:Reference TodoItemCell}, Path=BindingContext}"/>
+                                            <Label 
+                                                Text="{Binding CreatedDateTime, StringFormat='{}{0:\\P\\o\\s\\t\\e\\d \\o\\n MMMM dd, yyyy a\\t h:mm tt}'}" 
+                                                FontSize="12"
+                                                TextColor="#888888"
+                                                HorizontalOptions="End"
+                                                VerticalOptions="End"
+                                                Margin="0,0,0,0"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
                             </StackLayout>
                         </ViewCell.View>
                     </ViewCell>

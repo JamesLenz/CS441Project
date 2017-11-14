@@ -6,6 +6,9 @@ namespace cs441_project
     public partial class App : Application
     {
         public static HttpClient client;
+        public static string userEmail = null;
+        public static string userPassword = null;
+        public static string curDatabaseId = null;
 
         public App()
         {
