@@ -1,0 +1,46 @@
+﻿()
+Client
+-Added alert for when successful recovery email sent
+
+
+Server
+
+
+
+
+
+
+
+
+(Oct 15, 2017)
+Client
+-Moved ValidateUserItem, ForgotPasswordItem, and AddUserItem to a new file "ServerItems.cs"
+    -Added ResponseItem to this file, the standard object returned by server
+-All responses from server no longer a string, now deserialized into ResponseItem
+-Moved "HttpClient client" object and settings code to a global public instance in "App.xaml.cs"
+ so all pages can use it without reconnecting
+    -Access it with App.client
+-Changed Email_Entry Entry box "Keyboard" propery to "Email" in "cs441_projectPage.xaml"
+-Added ResourceDictionaries to XAML pages:
+    -cs441_projectPage.xaml
+    *other xaml files could use this, but this isn't that neccessary. its just to tidy up
+-Made HomePage accessible by successfully logging in
+-Homepage is now a TabbedPaged and added 3 tabs
+    -Tab 1 = testPage1 (added iOS icon)
+    -Tab 2 = testPage2
+    -Tab 3 = testPage3
+-Added icons to iOS resources folder
+    *Note: @1x, @2x, @3x are so the app can choose an appropriate size
+        -I chose 30x30, 60x60, and 90x90 respectively
+ 
+
+Server
+-Added getResponseJSON function to create a standard for responding to client, structure of
+ JSON is below
+        '{
+            "Success" : <true | false>
+            "Response" : "<response text, optional>"
+            "Data" : <extra data, optional> #if no data, then use "" or None, both will be treated as an empty string
+        }'
+    -Updated functions in "index.py" to return data in this way
+-Fixed double quotes in strings causing errors in JSON, replaces double quotes with proper escape character

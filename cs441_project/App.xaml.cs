@@ -1,11 +1,20 @@
 ﻿using Xamarin.Forms;
+using System.Net.Http;
 
 namespace cs441_project
 {
     public partial class App : Application
     {
+        public static HttpClient client;
+        public static string userEmail = null;
+        public static string userPassword = null;
+        public static string curDatabaseId = null;
+
         public App()
         {
+            client = new HttpClient();
+            client.MaxResponseContentBufferSize = 256000; //256KB
+
             InitializeComponent();
 
             MainPage = new NavigationPage(new cs441_projectPage());

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="cs441_project.TodoDetailsView">
+    <ContentPage.Content>
+        <StackLayout 
+            Orientation="Vertical"
+            Margin="15,0,15,0">
+            
+            <Label x:Name="testLabel" Text="testLabel"/>
+
+            <Label 
+                Text="Title" 
+                FontSize="16" 
+                FontAttributes="Bold"/>
+            <Entry 
+                Placeholder="Title" 
+                Text="{Binding Title}"/>
+            <Label 
+                Text="Description" 
+                FontSize="16" 
+                FontAttributes="Bold"/>
+            <Frame
+                HasShadow="false"
+                OutlineColor="#ddd"
+                Padding="0">
+                <Editor 
+                    Text="{Binding Description}"
+                    HeightRequest="200"/>
+            </Frame>
+            <Label 
+                Text="Due Date" 
+                FontSize="16" 
+                FontAttributes="Bold"/>
+            <DatePicker x:Name=" DatePicker"></DatePicker>
+            <TimePicker x:Name="TimePicker"></TimePicker>
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="SaveButton" Text="Save" Clicked="OnSave"/>
+                <Button x:Name="DeleteButton" Text="Delete" IsVisible="false" Clicked="OnDelete"/>
+                <Button x:Name="CancelButton" Text="Cancel" Clicked="OnCancel"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
