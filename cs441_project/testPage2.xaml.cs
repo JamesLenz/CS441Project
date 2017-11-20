@@ -8,7 +8,7 @@ namespace cs441_project
 {
     public partial class testPage2 : ContentPage
     {
-        private ObservableCollection<TodoItem> _ListViewItems = new ObservableCollection<TodoItem>();
+        private ObservableCollection<TodoItem> _TodoListViewItems = new ObservableCollection<TodoItem>();
 
         public testPage2()
         {
@@ -18,17 +18,14 @@ namespace cs441_project
 
             BindingContext = this;
 
-            MainListView.ItemsSource = _ListViewItems;
+            TodoListView.ItemsSource = _TodoListViewItems;
         }
-        async void TodoButton_OnClicked(object sender, System.EventArgs e)
+        async void TodoButton_OnClicked(object sender, EventArgs e)
         {
-            //var answer = await DisplayAlert("New Item", "Create new task?", "Yes", "No");
-            //if (answer == false)
-            //    return;
             var model = new TodoItem();
             await Navigation.PushAsync(new TodoDetailsView(model, true), true);
 
-            _ListViewItems.Add(model);
+            _TodoListViewItems.Add(model);
         }
 
         void OnSelect(object sender, SelectedItemChangedEventArgs e)

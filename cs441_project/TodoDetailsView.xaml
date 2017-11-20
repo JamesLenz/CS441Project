@@ -14,8 +14,8 @@
                 FontSize="16" 
                 FontAttributes="Bold"/>
             <Entry 
-                Placeholder="Title" 
-                Text="{Binding Title}"/>
+                x:Name="Title_Entry"
+                Placeholder="Title" />
             <Label 
                 Text="Description" 
                 FontSize="16" 
@@ -24,16 +24,17 @@
                 HasShadow="false"
                 OutlineColor="#ddd"
                 Padding="0">
-                <Editor 
-                    Text="{Binding Description}"
+            <Editor 
+                    x:Name="Description_Editor"
                     HeightRequest="200"/>
             </Frame>
             <Label 
                 Text="Due Date" 
                 FontSize="16" 
                 FontAttributes="Bold"/>
-            <DatePicker x:Name=" DatePicker"></DatePicker>
-            <TimePicker x:Name="TimePicker"></TimePicker>
+            <Switch x:Name="HasDueDateSwitch" IsToggled="true" Toggled="HasDueDateSwitch_OnToggle"/>
+            <DatePicker x:Name="DueDate_DatePicker"/>
+            <TimePicker x:Name="DueDate_TimePicker"/>
             <StackLayout Orientation="Horizontal">
                 <Button x:Name="SaveButton" Text="Save" Clicked="OnSave"/>
                 <Button x:Name="DeleteButton" Text="Delete" IsVisible="false" Clicked="OnDelete"/>

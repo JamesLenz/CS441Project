@@ -3,12 +3,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:cs441_project"
-    x:Class="cs441_project.HomePage">
+    x:Class="cs441_project.ClassroomPage">
 	<local:testPage1/>
-    <!--<NavigationPage>
-        <x:Arguments>-->
-            <local:testPage2/>
-        <!--</x:Arguments>
-    </NavigationPage>-->
+    <local:testPage2/>
     <local:testPage3/>
 </TabbedPage>

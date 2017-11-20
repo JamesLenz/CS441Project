@@ -15,35 +15,14 @@ namespace cs441_project
 	{
         private TodoItem _model;
 		public TodoDetailsView (TodoItem model, bool isNew)
-		{
-            ToolbarItem test = new ToolbarItem();
-
+        {
             InitializeComponent();
 
             _model = model;
-            _model.Title = "This is a sample title";
-            _model.CreatedDateTime = DateTime.Now;
-            _model.DueDateTime = DateTime.Now.AddDays(7);
-            _model.Done = false;
-
-            Random rand = new Random();
-            switch(rand.Next(4))
-            {
-                case 0:
-                    _model.Title = "This todo item seems to also have a very long title in it";
-                    _model.Description = "This is a long sample description to see how well the text looks and if it wraps correctly. This is another sentence that I am writing to further test the limitations of this todo item. As you can see, it is very long.";
-                    break;
-                case 1:
-                    _model.Description = "This is a short sample description.";
-                    break;
-                case 2:
-                    _model.Description = "This is a medium sample description to see how well the text looks and if it wraps correctly. ";
-                    break;
-                case 3:
-                    _model.Description = "";
-                    break;
-            }
-
+            Description_Editor.Text = _model.Description;
+            Title_Entry.Text = _model.Title;
+            DueDate_DatePicker.Date = _model.DueDateTime.Date;
+            DueDate_TimePicker.Time = _model.DueDateTime.TimeOfDay;
 
             if (!isNew)
                 DeleteButton.IsVisible = true;
@@ -52,14 +31,29 @@ namespace cs441_project
         public async void OnSave(object sender, EventArgs e)
         {
             var item = new AddTodoItem();
-            item.Title       = "Title";
-            item.Description = "Description";
-            item.DueDateTime = DateTime.Now.AddDays(7);
+            item.Title       = Title_Entry.Text;
+            item.Description = Description_Editor.Text;
+            if (HasDueDateSwitch.IsToggled)
+                item.DueDateTime = DueDate_DatePicker.Date.Add(DueDate_TimePicker.Time);
+            else
+                item.DueDateTime = DateTime.MinValue; //1/1/0001 12:00:00AM
             item.DatabaseId  = App.curDatabaseId;
             item.Email       = App.userEmail;
             item.Password    = App.userPassword;
 
             //todo: error correction or missing information checks
+            if (item.DatabaseId == null || item.Email == null || item.Password == null)
+            {
+                //internal error, these should not be null at this point
+                //todo: display error or force a log out
+            }
+
+            if (item.Title == null || item.Title == "")
+            {
+                //error, title cannot be empty
+                //todo: display error
+            }
+
 
             //set ip address to connect to
             var uri = new Uri("http://54.193.30.236/index.py");
@@ -110,5 +104,10 @@ namespace cs441_project
             
             Navigation.PopAsync();
         }
-	}
+
+        void HasDueDateSwitch_OnToggle(object sender, ToggledEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

@@ -12,6 +12,10 @@ namespace cs441_project
         public string Data { get; set; }
     }
 
+    //=======================//
+    //     Command Items     //
+    //=======================//
+
     // ask the server to check if email and password are in the database
     public class ValidateUserItem
     {
@@ -36,16 +40,72 @@ namespace cs441_project
         public string Password { get; set; }
     }
 
+    // add "to do" item to classroom database
     public class AddTodoItem
     {
         public readonly string Command = "ADD_TODO_ITEM";
         public DateTime DueDateTime { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        //which database to add the "to do" item to
+        //which classroom/database to interact with
         public string DatabaseId { get; set; }
-        //validate user's permission to add a "to do" item
+        //validate user's permission
         public string Email { get; set; }
         public string Password { get; set; }
     }
+
+    // join classroom
+    public class JoinClassroomItem
+    {
+        public readonly string Command = "JOIN_CLASSROOM";
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    // leave classroom
+    public class LeaveClassroomItem
+    {
+        public readonly string Command = "LEAVE_CLASSROOM";
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    // create classroom
+    public class CreateClassroomItem
+    {
+        public readonly string Command = "CREATE_CLASSROOM";
+        public string Title { get; set; }
+        public string Description { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    // delete classroom
+    public class DeleteClassroomItem
+    {
+        public readonly string Command = "DELETE_CLASSROOM";
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    //
+    public class GetUserClassroomsItem
+    {
+        public readonly string Command = "GET_USER_CLASSROOMS";
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    //
 }

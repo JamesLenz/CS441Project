@@ -1,12 +1,31 @@
-﻿()
+﻿(Nov 20, 2017)
 Client
--Added alert for when successful recovery email sent
-
+-Renamed HomePage to ClassroomPage
+-Added HomePage to join / enter / leave / create classrooms
+-Added JoinClassroomItem, LeaveClassroomItem, CreateClassroomItem, DeleteClassroomItem, GetMyClassroomsItem to ServerItems.cs
+-Heavy work on HomePage
+-Small changes to TodoDetailsPage
+-Added ClassroomInfoItem.cs
 
 Server
+-Added getUserClassrooms
 
 
 
+
+(Nov 14, 2017)
+Client
+-Added alert for when successful recovery email sent
+-Removed alert asking to create new task (todo)
+-todoDetailView updated
+-TodoItem updated to add new fields
+-Added AddTodoItem server command in ServerItems.cs
+-Added basic code to send/retreive todo items
+-Removed navigation page on HomePage.xaml and left it as a normal content page
+
+Server
+-Added revised database to create classroom databases
+-Added the add todo item command
 
 
 
@@ -32,7 +51,6 @@ Client
 -Added icons to iOS resources folder
     *Note: @1x, @2x, @3x are so the app can choose an appropriate size
         -I chose 30x30, 60x60, and 90x90 respectively
- 
 
 Server
 -Added getResponseJSON function to create a standard for responding to client, structure of
@@ -44,3 +62,20 @@ Server
         }'
     -Updated functions in "index.py" to return data in this way
 -Fixed double quotes in strings causing errors in JSON, replaces double quotes with proper escape character
+
+
+
+
+
+
+
+
+Login Page = Done (Login verification, Forgot password, New account)
+Home Page = 70% done (Retrieves, displays, allows creation of user's classrooms)
+    needs creation page to edit details
+    need to add simple classroom entry point
+Todo List Page = 80% Done (Retrieves, displays, allows creation of classroom's todo items)
+    need to sort it
+    some small features to add
+Server = 80% Done (mySQL Database setup, Apache setup, mod_wsgi setup, python installed, proper entry point and command interpreter and response)
+    a few commands are not implemented yet

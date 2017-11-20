@@ -70,7 +70,7 @@ namespace cs441_project
                     App.userEmail = item.Email;
                     App.userPassword = item.Password;
 
-                    await Navigation.PushAsync(new HomePage()); //goto home page
+                    await Navigation.PushAsync(new testPage2());//HomePage()); //goto home page
                 }
                 else //else, display error
                 {
@@ -131,6 +131,7 @@ namespace cs441_project
                 //if no errors, do something
                 if (resItem.Success)
                 {
+                    testLabel.Text = resItem.Data;
                     await DisplayAlert("Email Sent", resItem.Response, "OK");
                 }
                 else //else, display error
