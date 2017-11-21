@@ -1,27 +1,25 @@
 ﻿<Properties StartupConfiguration="{0126277C-C1E4-4B1A-8D0D-704DE36CD2F7}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="cs441_project Status">
     <Files>
-      <File FileName="cs441_project/LoginPage.xaml" Line="2" Column="43" />
-      <File FileName="cs441_project/Properties/AssemblyInfo.cs" Line="1" Column="1" />
-      <File FileName="cs441_project/cs441_projectPage.xaml" Line="63" Column="1" />
+      <File FileName="cs441_project/Changelog.txt" Line="1" Column="1" />
+      <File FileName="cs441_project/ServerItems.cs" Line="1" Column="1" />
+      <File FileName="cs441_project/TodoItem.cs" Line="1" Column="1" />
+      <File FileName="cs441_project/testPage2.xaml" Line="39" Column="40" />
+      <File FileName="cs441_project/testPage2.xaml.cs" Line="1" Column="1" />
+      <File FileName="cs441_project/TodoDetailsView.xaml" Line="45" Column="15" />
+      <File FileName="cs441_project/TodoDetailsView.xaml.cs" Line="1" Column="1" />
+      <File FileName="cs441_project/cs441_projectPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="cs441_project Status" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="cs441_project" expanded="True">
-            <Node name="cs441_project.iOS" expanded="True">
-              <Node name="References" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.cs441__project.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget." />
+  <MonoDevelop.Ide.ItemProperties.cs441__project.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.CFE51F38-0B2E-47F4-9AA0-49D058F2687F" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/James/Projects/cs441_project/cs441_project/cs441_projectPage.xaml" relfile="cs441_project/cs441_projectPage.xaml" line="9" column="33" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.cs441__project.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Intel_Atom_x86_64" />
 </Properties>
