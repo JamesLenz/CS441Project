@@ -4,11 +4,13 @@
       <File FileName="cs441_project/Changelog.txt" Line="1" Column="1" />
       <File FileName="cs441_project/ServerItems.cs" Line="1" Column="1" />
       <File FileName="cs441_project/TodoItem.cs" Line="1" Column="1" />
-      <File FileName="cs441_project/testPage2.xaml" Line="39" Column="40" />
-      <File FileName="cs441_project/testPage2.xaml.cs" Line="1" Column="1" />
+      <File FileName="cs441_project/testPage2.xaml" Line="90" Column="1" />
+      <File FileName="cs441_project/testPage2.xaml.cs" Line="25" Column="40" />
       <File FileName="cs441_project/TodoDetailsView.xaml" Line="45" Column="15" />
-      <File FileName="cs441_project/TodoDetailsView.xaml.cs" Line="1" Column="1" />
+      <File FileName="cs441_project/TodoDetailsView.xaml.cs" Line="68" Column="24" />
       <File FileName="cs441_project/cs441_projectPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="cs441_project/HomePage.xaml" Line="19" Column="4" />
+      <File FileName="cs441_project/HomePage.xaml.cs" Line="67" Column="18" />
       <File FileName="cs441_project Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>

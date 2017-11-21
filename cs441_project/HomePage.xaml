@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="cs441_project.HomePage">
+    <StackLayout
+        BackgroundColor="BlanchedAlmond"
+        Margin="0,0,0,0">
+        <Label x:Name="testLabel" Text="test label"/>
+        <ListView 
+            BackgroundColor="BlanchedAlmond"
+            x:Name="ClassroomListView" 
+            SeparatorVisibility="Default"
+            HasUnevenRows="true"
+            Margin="15,0,15,0"
+            IsPullToRefreshEnabled="true"
+            Refreshing="Handle_Refreshing"
+            SeparatorColor="BlanchedAlmond"
+            ItemTapped="ClassroomListView_ItemTapped">
+            <ListView.ItemTemplate>
+            <DataTemplate>
+            <ViewCell x:Name="ClassroomItemCell">
+                <ViewCell.ContextActions>
+                    <MenuItem
+                        Clicked="ClassroomItemCell_OnLeave" 
+                        CommandParameter="{Binding .}"
+                        Text="Leave"
+                        IsDestructive="True" />
+                 </ViewCell.ContextActions>
+                <StackLayout>
+                    <Frame
+                        BackgroundColor="White"
+                        HasShadow="false"
+                        Padding="5"
+                        OutlineColor="#cccccc"
+                        CornerRadius="0"
+                        Margin="0,0,0,0">
+                        <StackLayout>
+                            <Label
+                                Text="{Binding Title}" 
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                Margin="0,-5,0,0"/>
+                            <Label
+                                Text="{Binding Description}" 
+                                FontSize="12"
+                                TextColor="Black"
+                                Margin="0,-5,0,0"/>
+                            <Label
+                                Text="{Binding OwnerName, StringFormat='Instructor: \{0\}'}" 
+                                FontSize="10"
+                                TextColor="#888888"
+                                Margin="0,-5,0,0"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+        </ViewCell>
+        </DataTemplate>
+        </ListView.ItemTemplate>
+        </ListView>
+        <Button
+            Margin="10"
+            x:Name="CreateClassroomButton"
+            Clicked="CreateClassroomButton_OnClick"
+            Text="Create Classroom"
+            BackgroundColor="Orange"/>
+    </StackLayout>
+</ContentPage>
