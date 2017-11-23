@@ -37,3 +37,4 @@
 /Users/denisemunoz/Documents/GitHub/CS441Project/Droid/obj/Debug/res/drawable-xxhdpi/icon.png
 /Users/denisemunoz/Documents/GitHub/CS441Project/Droid/obj/Debug/R.cs.flag
 /Users/denisemunoz/Documents/GitHub/CS441Project/Droid/obj/Debug/uploadflags.txt
+/Users/James/Projects/cs441_project/Droid/obj/Debug/cs441_project.Droid.csprojResolveAssemblyReference.cache

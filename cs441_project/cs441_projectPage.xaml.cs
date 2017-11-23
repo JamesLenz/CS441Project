@@ -44,7 +44,7 @@ namespace cs441_project
             var content = new StringContent(json, Encoding.UTF8, "application/json"); //StringContent contains http headers
 
             //wait for response, then handle it
-			var response = await App.client.PostAsync(uri, content); //post
+            var response = await App.client.PostAsync(uri, content); //post
             if (response.IsSuccessStatusCode)
             { //success
                 //get our JSON response and convert it to a ResponseItem object
@@ -70,7 +70,7 @@ namespace cs441_project
                     App.userEmail = item.Email;
                     App.userPassword = item.Password;
 
-                    await Navigation.PushAsync(new testPage2());//HomePage()); //goto home page
+                    await Navigation.PushAsync(new HomePage()); //goto home page
                 }
                 else //else, display error
                 {
@@ -103,8 +103,8 @@ namespace cs441_project
                 return;
 
             //create the item we want to send
-			var item = new ForgotPasswordItem();
-			item.Email = Email_Entry.Text;
+            var item = new ForgotPasswordItem();
+            item.Email = Email_Entry.Text;
 
             //set ip address to connect to
             var uri = new Uri("http://54.193.30.236/index.py");

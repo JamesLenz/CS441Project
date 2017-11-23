@@ -43,7 +43,7 @@ namespace cs441_project
     // add "to do" item to classroom database
     public class AddTodoItem
     {
-        public readonly string Command = "ADD_TODO_ITEM";
+        public readonly string Command = "CREATE_TODO_ITEM";
         public DateTime DueDateTime { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

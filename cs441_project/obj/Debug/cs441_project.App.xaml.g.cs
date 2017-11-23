@@ -11,7 +11,7 @@
 namespace cs441_project {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("/Users/denisemunoz/Documents/GitHub/CS441Project/cs441_project/App.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("/Users/James/Projects/cs441_project/cs441_project/App.xaml")]
     public partial class App : global::Xamarin.Forms.Application {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

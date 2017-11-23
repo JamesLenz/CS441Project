@@ -13,12 +13,14 @@ namespace cs441_project
             Id = classroom.Id;
             Title = classroom.Title;
             Description = classroom.Description;
-            Owner = classroom.Owner;
+            OwnerEmail = classroom.OwnerEmail;
+            OwnerName = classroom.OwnerName;
         }
 
-        public UInt32 Id { get; set; }
+        public string Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string Owner { get; set; }
+        public string OwnerEmail { get; set; }
+        public string OwnerName { get; set; }
     }
 }
