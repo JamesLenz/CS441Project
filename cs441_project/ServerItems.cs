@@ -1,9 +1,72 @@
 ﻿using Xamarin.Forms;
 using System;
 
+using System.Net.Http;
+using System.Text;
+using Newtonsoft.Json;
+
 // items containing data relevant to a certain task
 namespace cs441_project
-{
+{   
+    public class SendToServer : ContentPage
+    {
+        public HttpResponseMessage responseMessage = new HttpResponseMessage();
+        public ResponseItem responseItem = new ResponseItem();
+        public Page bindingPage;
+
+        public SendToServer(Page bindingPage)
+        {
+            this.bindingPage = bindingPage;
+        }
+
+        public async void send(Uri uri, object item, Action HandleSuccess)
+        {
+            //serialize object and make it ready for sending over the internet
+            var json = JsonConvert.SerializeObject(item);
+            var content = new StringContent(json, Encoding.UTF8, "application/json"); //StringContent contains http headers
+
+            //wait for response, then handle it
+            responseMessage = await App.client.PostAsync(uri, content); //post
+            if (responseMessage.IsSuccessStatusCode)
+            { //success
+                //get our JSON response and convert it to a ResponseItem object
+                try
+                {
+                    responseItem = JsonConvert.DeserializeObject<ResponseItem>(await responseMessage.Content.ReadAsStringAsync());
+                }
+                catch (Exception ex)
+                {
+                    await bindingPage.DisplayAlert("Unexpected Error", ex.Message, "OK");
+                }
+
+                //if no errors, do something
+                if (responseItem.Success)
+                {
+                    try
+                    {
+                        HandleSuccess();
+                    }
+                    catch (Exception ex)
+                    {
+                        await bindingPage.DisplayAlert("Unexpected Parsing Error", ex.Message, "OK");
+                    }
+                }
+                else //else, display error
+                {
+                    await bindingPage.DisplayAlert("Error", responseItem.Response, "OK");
+                }
+            }
+            else
+            { //error
+                await bindingPage.DisplayAlert("Unexpected Error", responseMessage.ToString(), "OK");
+            }
+        }
+    }
+
+    //=======================//
+    //     Response Item     //
+    //=======================//
+
     // the object returned from the server
     public class ResponseItem
     {
@@ -41,12 +104,23 @@ namespace cs441_project
     }
 
     // add "to do" item to classroom database
-    public class AddTodoItem
+    public class CreateTodoItem
     {
         public readonly string Command = "CREATE_TODO_ITEM";
         public DateTime DueDateTime { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    public class DeleteTodoItem
+    {
+        public readonly string Command = "DELETE_TODO_ITEM";
+        public string TodoItemId { get; set; }
         //which classroom/database to interact with
         public string DatabaseId { get; set; }
         //validate user's permission

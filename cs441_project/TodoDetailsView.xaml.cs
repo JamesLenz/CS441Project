@@ -13,7 +13,10 @@ namespace cs441_project
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TodoDetailsView: ContentPage
 	{
+        private SendToServer sts;
+        private Uri uri = new Uri("http://54.193.30.236/index.py");
         private TodoItem _model;
+
 		public TodoDetailsView (TodoItem model, bool isNew)
         {
             InitializeComponent();
@@ -24,13 +27,15 @@ namespace cs441_project
             DueDate_DatePicker.Date = _model.DueDateTime.Date;
             DueDate_TimePicker.Time = _model.DueDateTime.TimeOfDay;
 
+            sts = new SendToServer(this);
+
             if (!isNew)
                 DeleteButton.IsVisible = true;
 		}
 
-        public async void OnSave(object sender, EventArgs e)
+        public void OnSave(object sender, EventArgs e)
         {
-            var item = new AddTodoItem();
+            var item = new CreateTodoItem();
             item.Title       = Title_Entry.Text;
             item.Description = Description_Editor.Text;
             if (HasDueDateSwitch.IsToggled)
@@ -54,7 +59,12 @@ namespace cs441_project
                 //todo: display error
             }
 
+            sts.send(uri, item, () =>
+            {
+                testLabel.Text = sts.responseItem.ToString();
+            });
 
+            /* OBSOLETE CODE, USE SendToServer CLASS. CHECK ABOVE
             //set ip address to connect to
             var uri = new Uri("http://54.193.30.236/index.py");
 
@@ -91,7 +101,7 @@ namespace cs441_project
             { //error
                 await DisplayAlert("Unexpected Error", response.ToString(), "OK");
                 return;
-            }
+            }*/
         }
 
         public void OnCancel(object sender, EventArgs e)

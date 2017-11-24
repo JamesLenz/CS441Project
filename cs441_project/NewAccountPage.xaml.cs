@@ -8,10 +8,15 @@ namespace cs441_project
 {
     public partial class NewAccountPage : ContentPage
     {
+        private SendToServer sts;
+        private Uri uri = new Uri("http://54.193.30.236/index.py");
+
         public NewAccountPage()
         {
             Title = "New Account";
             InitializeComponent();
+
+            sts = new SendToServer(this);
         }
 
         // this method currently in testing
@@ -39,6 +44,17 @@ namespace cs441_project
             item.Email = Email_Entry.Text;
             item.Password = Password_Entry.Text;
 
+            sts.send(uri, item, () => 
+            {
+                testLabel.Text = sts.responseItem.Success.ToString();
+                //todo:if no errors, display confirmation
+                //remove this page and the login page from the navigation stack,
+                //  the back button should not go back and there should be a
+                //  dedicated log off button
+                //login the user as well
+            });
+
+            /* OBSOLETE CODE, USE SendToServer CLASS. CHECK ABOVE
             //set ip address to connect to
             var uri = new Uri("http://54.193.30.236/index.py");
 
@@ -80,7 +96,7 @@ namespace cs441_project
             { //error
                 await DisplayAlert("Unexpected Error", response.ToString(), "OK");
                 return;
-            }
+            }*/
         }
     }
 }

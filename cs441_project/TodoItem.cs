@@ -8,6 +8,7 @@ namespace cs441_project
         {
         }
 
+        public string Id { get; set; }
         public DateTime CreatedDateTime { get; set; }
         public DateTime DueDateTime { get; set; }
         public string Title { get; set; }

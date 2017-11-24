@@ -8,6 +8,9 @@ namespace cs441_project
 {
     public partial class cs441_projectPage : ContentPage
     {
+        private SendToServer sts;
+        private Uri uri = new Uri("http://54.193.30.236/index.py");
+
 		public cs441_projectPage()
         {
 			//set the back button's title on the next page
@@ -16,6 +19,8 @@ namespace cs441_project
 
 			NavigationPage.SetHasNavigationBar(this, false); //remove navigation bar for sign in page
             InitializeComponent();
+
+            sts = new SendToServer(this);
         }
 
 		async void Login_Clicked(object sender, System.EventArgs e)
@@ -36,6 +41,20 @@ namespace cs441_project
 			item.Email = Email_Entry.Text;
 			item.Password = Password_Entry.Text;
 
+            sts.send(uri, item, async () => 
+            {
+                testLabel.Text = sts.responseItem.Success.ToString();
+                //todo:remove this page from navigation stack,
+                //     back button should not work because
+                //     there should be a dedicated log off button
+
+                //login was successful, so store the successful login info for future use. (these variables are global to the app)
+                App.userEmail = item.Email;
+                App.userPassword = item.Password;
+
+                await Navigation.PushAsync(new HomePage()); //goto home page
+            });
+            /* OBSOLETE CODE, USE SendToServer CLASS. CHECK ABOVE
             //set ip address to connect to
             var uri = new Uri("http://54.193.30.236/index.py");
 
@@ -81,7 +100,7 @@ namespace cs441_project
             { //error
                 await DisplayAlert("Unexpected Error", response.ToString(), "OK");
                 return;
-            }
+            }*/
         }
 
 		async void NewAccount_Clicked(object sender, System.EventArgs e)
@@ -106,6 +125,13 @@ namespace cs441_project
             var item = new ForgotPasswordItem();
             item.Email = Email_Entry.Text;
 
+            sts.send(uri, item, async () => 
+            {
+                testLabel.Text = sts.responseItem.Data;
+                await DisplayAlert("Email Sent", sts.responseItem.Response, "OK");
+            });
+
+            /* OBSOLETE CODE, USE SendToServer CLASS. CHECK ABOVE
             //set ip address to connect to
             var uri = new Uri("http://54.193.30.236/index.py");
 
@@ -143,7 +169,7 @@ namespace cs441_project
 			{ //error
                 await DisplayAlert("Unexpected Error", response.ToString(), "OK");
                 return;
-			}
+			}*/
 		}
     }
 }

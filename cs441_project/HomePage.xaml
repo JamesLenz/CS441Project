@@ -6,7 +6,7 @@
     <StackLayout
         BackgroundColor="BlanchedAlmond"
         Margin="0,0,0,0">
-        <Label x:Name="testLabel" Text="test label"/>
+        <Label x:Name="testLabel" Text="test label" FontSize="10"/>
         <ListView 
             BackgroundColor="BlanchedAlmond"
             x:Name="ClassroomListView" 
