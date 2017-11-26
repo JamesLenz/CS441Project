@@ -117,10 +117,22 @@ namespace cs441_project
         public string Password { get; set; }
     }
 
+    // delete a to do item
     public class DeleteTodoItem
     {
         public readonly string Command = "DELETE_TODO_ITEM";
         public string TodoItemId { get; set; }
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    // get to do items
+    public class GetTodoItems
+    {
+        public readonly string Command = "GET_TODO_ITEMS";
         //which classroom/database to interact with
         public string DatabaseId { get; set; }
         //validate user's permission

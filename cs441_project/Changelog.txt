@@ -1,4 +1,19 @@
-﻿(Nov 24, 2017)
+﻿(Nov 26, 2017)
+Client
+-Added pull-to-refresh to testPage2 (aka todo list page)
+-Made HomePage and testPage2 (aka todo list page) pages populate list views when entering page
+-Added toolbar icons to testPage 2 (aka todo list page)
+-Added JoinClassroomPage.xaml and JoinClassroomPage.cs
+-Added titles to every page
+Server
+-Implemented a few more command (get todo items,)
+-Started to implement better error responses because they are not user friendly
+    -Join classroom
+
+
+
+
+(Nov 24, 2017)
 Client
 -Added Join classroom toolbar item
 -Made communication to the server a class, rather than copy/pasting the same code

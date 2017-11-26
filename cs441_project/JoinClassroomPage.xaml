@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="cs441_project.JoinClassroomPage">
+	<StackLayout
+        Spacing="3"
+        BackgroundColor="BlanchedAlmond">
+        <Label Text="testLabel" FontSize="10" x:Name="testLabel"/>
+
+        <Frame
+            BackgroundColor="White"
+            Margin="25,25,25,25"
+            HasShadow="true">
+            <StackLayout>
+            <Label
+                Text="Please enter the 10-digit classroom ID for the classroom you want to join"/>
+            <Entry
+                Margin="0,5,0,0"
+                HeightRequest="50"
+                x:Name="ClassroomId_Entry"
+                Placeholder="Classroom ID"
+                Keyboard="Numeric"/>
+            <Button
+                Text="Join Classroom"
+                Margin="25,15,25,0"
+                HeightRequest="50"
+                FontSize="15"
+                TextColor="White"
+                x:Name="Join_Button"
+                Clicked="JoinButton_OnClicked"
+                BackgroundColor="Orange"/>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>

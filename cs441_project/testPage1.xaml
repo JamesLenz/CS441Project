@@ -5,11 +5,11 @@
     x:Class="cs441_project.testPage1"
     Title="Calendar"
     BackgroundColor="BlanchedAlmond">
-    <ContentPage.Icon>
+    <!--<ContentPage.Icon>
         <OnPlatform
             x:TypeArguments="FileImageSource"
             iOS="Todo_Icon.png" />
-    </ContentPage.Icon>
+    </ContentPage.Icon>-->
 
     <ContentPage.Content>
        <StackLayout VerticalOptions="Center">

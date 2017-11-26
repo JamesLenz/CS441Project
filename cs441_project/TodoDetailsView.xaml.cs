@@ -21,19 +21,21 @@ namespace cs441_project
         {
             InitializeComponent();
 
-            _model = model;
+            _model = new TodoItem(model);
             Description_Editor.Text = _model.Description;
-            Title_Entry.Text = _model.Title;
+            Title_Entry.Text        = _model.Title;
             DueDate_DatePicker.Date = _model.DueDateTime.Date;
             DueDate_TimePicker.Time = _model.DueDateTime.TimeOfDay;
 
             sts = new SendToServer(this);
 
+            Title = "New Todo Item";
+
             if (!isNew)
                 DeleteButton.IsVisible = true;
 		}
 
-        public void OnSave(object sender, EventArgs e)
+        public async void OnSave(object sender, EventArgs e)
         {
             var item = new CreateTodoItem();
             item.Title       = Title_Entry.Text;
@@ -46,62 +48,30 @@ namespace cs441_project
             item.Email       = App.userEmail;
             item.Password    = App.userPassword;
 
-            //todo: error correction or missing information checks
             if (item.DatabaseId == null || item.Email == null || item.Password == null)
             {
                 //internal error, these should not be null at this point
-                //todo: display error or force a log out
+                await DisplayAlert("Error: Internal Error", "An unexpected error has occurred. Try logging out and back in.", "OK");
+                return;
             }
 
             if (item.Title == null || item.Title == "")
             {
-                //error, title cannot be empty
-                //todo: display error
+                await DisplayAlert("Error: Title", "Please enter a title", "OK");
+                return;
+            }
+
+            if (item.DueDateTime < DateTime.Now && HasDueDateSwitch.IsToggled)
+            {
+                await DisplayAlert("Error: Due Date","The due date cannot be in the past","OK");
+                return;
             }
 
             sts.send(uri, item, () =>
             {
-                testLabel.Text = sts.responseItem.ToString();
+                testLabel.Text = sts.responseItem.Response;
+                Navigation.PopAsync();
             });
-
-            /* OBSOLETE CODE, USE SendToServer CLASS. CHECK ABOVE
-            //set ip address to connect to
-            var uri = new Uri("http://54.193.30.236/index.py");
-
-            //serialize object and make it ready for sending over the internet
-            var json = JsonConvert.SerializeObject(item);
-            var content = new StringContent(json, Encoding.UTF8, "application/json"); //StringContent contains http headers
-
-            //wait for response, then handle it
-            var response = await App.client.PostAsync(uri, content); //post
-            if (response.IsSuccessStatusCode)
-            { //success
-                //get our JSON response and convert it to a ResponseItem object
-                ResponseItem resItem = new ResponseItem();
-                try
-                {
-                    resItem = JsonConvert.DeserializeObject<ResponseItem>(await response.Content.ReadAsStringAsync());
-                }
-                catch (Exception ex)
-                {
-                    await DisplayAlert("Unexpected Error", ex.Message, "OK");
-                }
-
-                //if no errors, do something
-                if (resItem.Success)
-                {
-                    testLabel.Text = resItem.ToString();
-                }
-                else //else, display error
-                {
-                    await DisplayAlert("Error", resItem.Response, "OK");
-                }
-            }
-            else
-            { //error
-                await DisplayAlert("Unexpected Error", response.ToString(), "OK");
-                return;
-            }*/
         }
 
         public void OnCancel(object sender, EventArgs e)
@@ -111,13 +81,33 @@ namespace cs441_project
 
         public void OnDelete(object sender, EventArgs e)
         {
-            
+            //todo: confirm that user wants to delete it
+
+            var item        = new DeleteTodoItem();
+            item.Email      = App.userEmail;
+            item.Password   = App.userPassword;
+            item.DatabaseId = App.curDatabaseId;
+            item.TodoItemId = _model.Id;
+
+            sts.send(uri, item, () => 
+            {
+                
+            });
             Navigation.PopAsync();
         }
 
         void HasDueDateSwitch_OnToggle(object sender, ToggledEventArgs e)
         {
-            throw new NotImplementedException();
+            if (HasDueDateSwitch.IsEnabled)
+            {
+                DueDate_DatePicker.IsEnabled = true;
+                DueDate_TimePicker.IsEnabled = true;
+            }
+            else
+            {
+                DueDate_DatePicker.IsEnabled = false;
+                DueDate_TimePicker.IsEnabled = false;
+            }
         }
     }
 }

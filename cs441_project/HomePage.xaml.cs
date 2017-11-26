@@ -21,35 +21,45 @@ namespace cs441_project
 
             sts = new SendToServer(this);
 
+            Title = "My Classrooms";
+
             ToolbarItems.Add(new ToolbarItem("Join", "", ToolbarItem_OnJoin, ToolbarItemOrder.Primary));
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            Handle_Refreshing(null, null);
         }
 
         void Handle_Refreshing(object sender, System.EventArgs e)
         {
-            ClassroomListView.IsRefreshing = false;
-            testLabel.Text = "Refreshed";
             _ClassroomListViewItems.Clear();
             GetMyClassrooms();
+            testLabel.Text = "Refreshed";
+            ClassroomListView.IsRefreshing = false;
         }
 
         async void ClassroomListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            App.curDatabaseId = ((ClassroomInfoItem)e.Item).Id;
+            App.curDatabaseId = ((ClassroomInfoItem)e.Item).Id.ToString().PadLeft(10, '0');
             await Navigation.PushAsync(new ClassroomPage()); //goto classroom page
             ((ListView)sender).SelectedItem = null;
         }
 
-        void ToolbarItem_OnJoin()
+        async void ToolbarItem_OnJoin()
         {
-            var item        = new JoinClassroomItem();
-            item.DatabaseId = "2956453922";
+            /*var item        = new JoinClassroomItem();
+            item.DatabaseId = "na";
             item.Email      = App.userEmail;
             item.Password   = App.userPassword;
 
             sts.send(uri, item, () => {
                 Handle_Refreshing(null, null);
                 testLabel.Text = "Joined";
-            });
+            });*/
+            await Navigation.PushAsync(new JoinClassroomPage());
         }
 
         public void GetMyClassrooms()

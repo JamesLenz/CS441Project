@@ -13,10 +13,11 @@ namespace cs441_project
 
         public NewAccountPage()
         {
-            Title = "New Account";
             InitializeComponent();
 
             sts = new SendToServer(this);
+
+            Title = "New Account";
         }
 
         // this method currently in testing
@@ -53,50 +54,6 @@ namespace cs441_project
                 //  dedicated log off button
                 //login the user as well
             });
-
-            /* OBSOLETE CODE, USE SendToServer CLASS. CHECK ABOVE
-            //set ip address to connect to
-            var uri = new Uri("http://54.193.30.236/index.py");
-
-            //serialize object and make it ready for sending over the internet
-            var json = JsonConvert.SerializeObject(item);
-            var content = new StringContent(json, Encoding.UTF8, "application/json"); //StringContent contains http headers
-
-            //wait for response, then handle it
-            var response = await App.client.PostAsync(uri, content); //post
-            if (response.IsSuccessStatusCode)
-            { //success
-                //get our JSON response and convert it to a ResponseItem object
-                ResponseItem resItem = new ResponseItem();
-                try
-                {
-                    resItem = JsonConvert.DeserializeObject<ResponseItem>(await response.Content.ReadAsStringAsync());
-                }
-                catch (Exception ex)
-                {
-                    await DisplayAlert("Unexpected Error", ex.Message + "...\n..." + response.ToString(), "OK");
-                }
-
-                //if no errors, do something
-                if (resItem.Success)
-                {
-                    testLabel.Text = resItem.Success.ToString();
-                    //todo:if no errors, display confirmation
-                    //remove this page and the login page from the navigation stack,
-                    //  the back button should not go back and there should be a
-                    //  dedicated log off button
-                    //login the user as well
-                }
-                else //else, display error
-                {
-                    await DisplayAlert("Error", resItem.Response, "OK");
-                }
-            }
-            else
-            { //error
-                await DisplayAlert("Unexpected Error", response.ToString(), "OK");
-                return;
-            }*/
         }
     }
 }

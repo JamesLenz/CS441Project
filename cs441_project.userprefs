@@ -1,17 +1,18 @@
 ﻿<Properties StartupConfiguration="{0126277C-C1E4-4B1A-8D0D-704DE36CD2F7}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="cs441_project Status">
     <Files>
-      <File FileName="cs441_project/Changelog.txt" Line="6" Column="91" />
-      <File FileName="cs441_project/ServerItems.cs" Line="123" Column="46" />
-      <File FileName="cs441_project/testPage2.xaml" Line="90" Column="1" />
-      <File FileName="cs441_project/testPage2.xaml.cs" Line="44" Column="10" />
-      <File FileName="cs441_project/TodoDetailsView.xaml" Line="45" Column="15" />
-      <File FileName="cs441_project/TodoDetailsView.xaml.cs" Line="30" Column="42" />
+      <File FileName="cs441_project/Changelog.txt" Line="12" Column="5" />
+      <File FileName="cs441_project/ServerItems.cs" Line="135" Column="59" />
+      <File FileName="cs441_project/testPage2.xaml" Line="13" Column="24" />
+      <File FileName="cs441_project/testPage2.xaml.cs" Line="27" Column="28" />
+      <File FileName="cs441_project/TodoDetailsView.xaml" Line="4" Column="54" />
+      <File FileName="cs441_project/TodoDetailsView.xaml.cs" Line="32" Column="35" />
       <File FileName="cs441_project/cs441_projectPage.xaml" Line="96" Column="1" />
-      <File FileName="cs441_project/cs441_projectPage.xaml.cs" Line="23" Column="42" />
+      <File FileName="cs441_project/cs441_projectPage.xaml.cs" Line="15" Column="10" />
       <File FileName="cs441_project/HomePage.xaml" Line="12" Column="40" />
-      <File FileName="cs441_project/HomePage.xaml.cs" Line="22" Column="42" />
-      <File FileName="cs441_project/NewAccountPage.xaml.cs" Line="18" Column="13" />
+      <File FileName="cs441_project/HomePage.xaml.cs" Line="13" Column="34" />
+      <File FileName="cs441_project/JoinClassroomPage.xaml" Line="14" Column="96" />
+      <File FileName="cs441_project/JoinClassroomPage.xaml.cs" Line="49" Column="16" />
       <File FileName="cs441_project Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
