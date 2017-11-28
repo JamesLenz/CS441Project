@@ -7,9 +7,20 @@ namespace cs441_project
 {
     public partial class testPage3 : ContentPage
     {
-        public testPage3()
+        private TabbedPage _ContainerPage;
+
+        public testPage3(TabbedPage containerPage)
         {
             InitializeComponent();
+
+            _ContainerPage = containerPage;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            _ContainerPage.Title = "Chatrooms";
         }
     }
 }

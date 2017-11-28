@@ -54,3 +54,4 @@
 /Users/James/Projects/cs441_project/cs441_project/obj/Debug/cs441_project.dll
 /Users/James/Projects/cs441_project/cs441_project/obj/Debug/cs441_project.pdb
 /Users/James/Projects/cs441_project/cs441_project/obj/Debug/cs441_project.JoinClassroomPage.xaml.g.cs
+/Users/James/Projects/cs441_project/cs441_project/obj/Debug/cs441_project.UsersPage.xaml.g.cs

@@ -3,12 +3,14 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="cs441_project.testPage3"
-    Title="Page 3">
-    <!--<ContentPage.Icon>
+    BackgroundColor="BlanchedAlmond"
+    Title="Chatroom">
+    
+    <ContentPage.Icon>
         <OnPlatform
             x:TypeArguments="FileImageSource"
-            iOS="Todo_Icon.png" />
-    </ContentPage.Icon>-->
+            iOS="Chat_Icon.png" />
+    </ContentPage.Icon>
     
-    <Label Text="testPage 3"/>
+    <Label Text="Chatrooms"/>
 </ContentPage>

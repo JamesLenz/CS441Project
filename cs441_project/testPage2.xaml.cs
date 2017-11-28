@@ -13,32 +13,38 @@ namespace cs441_project
         private SendToServer sts;
         private Uri uri = new Uri("http://54.193.30.236/index.py");
         private ObservableCollection<TodoItem> _TodoListViewItems = new ObservableCollection<TodoItem>();
+        private TabbedPage _ContainerPage;
+        private bool isOwner = false;
 
-        public testPage2()
+        public testPage2(TabbedPage containerPage)
         {
-            NavigationPage.SetHasNavigationBar(this, true);
-
             InitializeComponent();
 
             BindingContext = this;
 
             sts = new SendToServer(this);
 
-            Title = "Todo";
+            _ContainerPage = containerPage;
+
+            if (App.curClassroom.OwnerEmail == App.userEmail)
+                isOwner = true;
 
             TodoListView.ItemsSource = _TodoListViewItems;
 
-            ToolbarItems.Add(new ToolbarItem("Create", "Todo_Icon.png", () => {; }, ToolbarItemOrder.Primary));
+            if (isOwner)
+                ToolbarItems.Add(new ToolbarItem("New", "Add_Icon.png", ToolbarItem_OnAdd, ToolbarItemOrder.Primary));
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
+            _ContainerPage.Title = "Todo";
+
             Handle_Refreshing(null, null);
         }
 
-        public async void NewTaskButton_OnClicked(object sender, EventArgs e)
+        public async void ToolbarItem_OnAdd()
         {
             var model = new TodoItem();
             await Navigation.PushAsync(new TodoDetailsView(model, true), true);
@@ -46,9 +52,14 @@ namespace cs441_project
             Handle_Refreshing(null, null);
         }
 
-        public async void OnSelect(object sender, SelectedItemChangedEventArgs e)
+        public async void OnSelect(object sender, ItemTappedEventArgs e)
         {
-            var model = (TodoItem)e.SelectedItem;
+            if (!isOwner)
+            {
+                ((ListView)sender).SelectedItem = null;
+                return;
+            }
+            var model = (TodoItem)e.Item;
             await Navigation.PushAsync(new TodoDetailsView(model, false), true);
         }
 
@@ -78,7 +89,7 @@ namespace cs441_project
             var item        = new GetTodoItems();
             item.Email      = App.userEmail;
             item.Password   = App.userPassword;
-            item.DatabaseId = App.curDatabaseId;
+            item.DatabaseId = App.curClassroom.Id;
 
             sts.send(uri, item, async () =>
             {
@@ -102,11 +113,6 @@ namespace cs441_project
                     await DisplayAlert("Unexpected Parsing Error", ex.Message, "OK");
                 }
             });
-        }
-
-        void OnCreate(object sender, EventArgs e)
-        {
-            testLabel.Text = "Created";
         }
     }
 }

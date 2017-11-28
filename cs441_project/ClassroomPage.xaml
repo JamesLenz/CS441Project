@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:cs441_project"
     x:Class="cs441_project.ClassroomPage">
-	<local:testPage1/>
+	<!--<local:testPage1 />
     <local:testPage2/>
-    <local:testPage3/>
+    <local:testPage3/>-->
 </TabbedPage>

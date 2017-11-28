@@ -3,31 +3,17 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="cs441_project.testPage1"
-    Title="Calendar"
-    BackgroundColor="BlanchedAlmond">
-    <!--<ContentPage.Icon>
+    BackgroundColor="BlanchedAlmond"
+    Title="Forum">
+
+    <ContentPage.Icon>
         <OnPlatform
             x:TypeArguments="FileImageSource"
-            iOS="Todo_Icon.png" />
-    </ContentPage.Icon>-->
+            iOS="Forum_Icon.png" />
+    </ContentPage.Icon>
 
-    <ContentPage.Content>
-       <StackLayout VerticalOptions="Center">
-                <!--<DatePicker MinimumDate="10/26/2017"
-                        MaximumDate="12/26/2017"
-                        DateSelected="DatePicker_OnDateSelected"/>-->
-                <Label Text="Calendar"
-                   FontSize="20"
-                   TextColor="Black"
-                   HorizontalOptions="Center"/>
-            <Label Text="Why doesn't Calendar work?"
-                       FontSize="20"/>
-            <!--<Calendar SelectedDate ="9/26/2017" DisplayDate="10/26/2017" DisplayDateStart="1/10/2017" DisplayDateEnd="4/18/2017"/>-->
-        </StackLayout>
-       </ContentPage.Content>
-
-
-    <!--<Calendar name="myCalendar" Height="300" width="300" SelectionMode="MultipleRange" IsTodayHighlighted="true"></Calendar>-->
-    
+    <StackLayout>
+        <Label Text="Forum"/>
+    </StackLayout>
     
     </ContentPage>

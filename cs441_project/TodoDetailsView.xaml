@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="cs441_project.TodoDetailsView">
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="cs441_project.TodoDetailsView"
+    BackgroundColor="BlanchedAlmond">
     <ContentPage.Content>
         <StackLayout 
             Orientation="Vertical"
@@ -11,35 +13,54 @@
 
             <Label 
                 Text="Title" 
-                FontSize="16" 
+                FontSize="16"
                 FontAttributes="Bold"/>
             <Entry 
                 x:Name="Title_Entry"
-                Placeholder="Title" />
+                HeightRequest="30"
+                Placeholder="Title"/>
             <Label 
                 Text="Description" 
                 FontSize="16" 
                 FontAttributes="Bold"/>
             <Frame
                 HasShadow="false"
-                OutlineColor="#ddd"
+                OutlineColor="#ccc"
+                CornerRadius="3"
+                BackgroundColor="BlanchedAlmond"
+                IsClippedToBounds="true"
                 Padding="0">
-            <Editor 
+                <Editor 
                     x:Name="Description_Editor"
+                    FontSize="14"
                     HeightRequest="200"/>
             </Frame>
             <Label 
                 Text="Due Date" 
                 FontSize="16" 
                 FontAttributes="Bold"/>
-            <Switch x:Name="HasDueDateSwitch" IsToggled="true" Toggled="HasDueDateSwitch_OnToggle"/>
+            <Frame
+                BackgroundColor="White"
+                CornerRadius="3"
+                OutlineColor="#ccc"
+                HasShadow="false"
+                Padding="5">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Has Due Date " VerticalOptions="Center" FontAttributes="Bold" FontSize="14"/>
+                    <Switch x:Name="HasDueDateSwitch" IsToggled="true" Toggled="HasDueDateSwitch_OnToggle" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+            </Frame>
             <DatePicker x:Name="DueDate_DatePicker"/>
             <TimePicker x:Name="DueDate_TimePicker"/>
-            <StackLayout Orientation="Horizontal">
-                <Button x:Name="SaveButton" Text="Save" Clicked="OnSave"/>
-                <Button x:Name="DeleteButton" Text="Delete" IsVisible="false" Clicked="OnDelete"/>
-                <Button x:Name="CancelButton" Text="Cancel" Clicked="OnCancel"/>
-            </StackLayout>
+            <Button 
+                x:Name="SaveButton" 
+                Text="Save" 
+                Clicked="Button_OnSave"
+                BackgroundColor="Orange"
+                TextColor="White"
+                Margin="25,15,25,0"
+                HeightRequest="50"
+                FontSize="15"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

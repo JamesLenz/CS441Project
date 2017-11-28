@@ -11,11 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace cs441_project
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TodoDetailsView: ContentPage
+	public partial class TodoDetailsView : ContentPage
 	{
         private SendToServer sts;
         private Uri uri = new Uri("http://54.193.30.236/index.py");
         private TodoItem _model;
+        private bool isNew = true;
 
 		public TodoDetailsView (TodoItem model, bool isNew)
         {
@@ -27,86 +28,125 @@ namespace cs441_project
             DueDate_DatePicker.Date = _model.DueDateTime.Date;
             DueDate_TimePicker.Time = _model.DueDateTime.TimeOfDay;
 
+            this.isNew = isNew;
+
+            DueDate_DatePicker.Date = DateTime.Now.Date;
+            DueDate_TimePicker.Time = DateTime.Now.TimeOfDay;
+
             sts = new SendToServer(this);
 
             Title = "New Todo Item";
 
-            if (!isNew)
-                DeleteButton.IsVisible = true;
+            if (!this.isNew)
+                ToolbarItems.Add(new ToolbarItem("Delete", "Trashcan_Icon", ToolbarItem_OnDelete, ToolbarItemOrder.Primary));
 		}
 
-        public async void OnSave(object sender, EventArgs e)
+        public async void Button_OnSave(object sender, EventArgs e)
         {
-            var item = new CreateTodoItem();
-            item.Title       = Title_Entry.Text;
-            item.Description = Description_Editor.Text;
-            if (HasDueDateSwitch.IsToggled)
-                item.DueDateTime = DueDate_DatePicker.Date.Add(DueDate_TimePicker.Time);
-            else
-                item.DueDateTime = DateTime.MinValue; //1/1/0001 12:00:00AM
-            item.DatabaseId  = App.curDatabaseId;
-            item.Email       = App.userEmail;
-            item.Password    = App.userPassword;
-
-            if (item.DatabaseId == null || item.Email == null || item.Password == null)
+            if (App.curClassroom.Id == null || App.userEmail == null || App.userPassword == null)
             {
                 //internal error, these should not be null at this point
                 await DisplayAlert("Error: Internal Error", "An unexpected error has occurred. Try logging out and back in.", "OK");
                 return;
             }
 
-            if (item.Title == null || item.Title == "")
+            if (Title_Entry.Text == null || Title_Entry.Text == "")
             {
                 await DisplayAlert("Error: Title", "Please enter a title", "OK");
                 return;
             }
 
-            if (item.DueDateTime < DateTime.Now && HasDueDateSwitch.IsToggled)
+            object item;
+            if (isNew)
             {
-                await DisplayAlert("Error: Due Date","The due date cannot be in the past","OK");
-                return;
+                var temp_item             = new CreateTodoItem();
+                temp_item.Title           = Title_Entry.Text;
+                temp_item.Description     = Description_Editor.Text;
+                if (HasDueDateSwitch.IsToggled)
+                    temp_item.DueDateTime = DueDate_DatePicker.Date.Add(DueDate_TimePicker.Time);
+                else
+                    temp_item.DueDateTime = DateTime.MinValue; //1/1/0001 12:00:00AM
+                temp_item.DatabaseId      = App.curClassroom.Id;
+                temp_item.Email           = App.userEmail;
+                temp_item.Password        = App.userPassword;
+
+                if (temp_item.DueDateTime < DateTime.Now && HasDueDateSwitch.IsToggled)
+                {
+                    await DisplayAlert("Error: Due Date", "The due date cannot be in the past", "OK");
+                    return;
+                }
+                item = temp_item;
+            }
+            else
+            {
+                var temp_item             = new EditTodoItem();
+                temp_item.Title           = Title_Entry.Text;
+                temp_item.Description     = Description_Editor.Text;
+                if (HasDueDateSwitch.IsToggled)
+                    temp_item.DueDateTime = DueDate_DatePicker.Date.Add(DueDate_TimePicker.Time);
+                else
+                    temp_item.DueDateTime = DateTime.MinValue; //1/1/0001 12:00:00AM
+                temp_item.DatabaseId      = App.curClassroom.Id;
+                temp_item.Email           = App.userEmail;
+                temp_item.Password        = App.userPassword;
+                temp_item.TodoItemId      = _model.Id;
+
+                if (temp_item.DueDateTime < DateTime.Now && HasDueDateSwitch.IsToggled)
+                {
+                    await DisplayAlert("Error: Due Date", "The due date cannot be in the past", "OK");
+                    return;
+                }
+                item = temp_item;
             }
 
             sts.send(uri, item, () =>
             {
-                testLabel.Text = sts.responseItem.Response;
                 Navigation.PopAsync();
             });
         }
 
-        public void OnCancel(object sender, EventArgs e)
+        public async void ToolbarItem_OnDelete()
         {
-            Navigation.PopAsync();
-        }
-
-        public void OnDelete(object sender, EventArgs e)
-        {
-            //todo: confirm that user wants to delete it
+            bool answer = await DisplayAlert("Delete Todo item?", "Are you sure you want to permanently delete this todo item?", "Yes", "No");
+            if (!answer)
+                return;
 
             var item        = new DeleteTodoItem();
             item.Email      = App.userEmail;
             item.Password   = App.userPassword;
-            item.DatabaseId = App.curDatabaseId;
+            item.DatabaseId = App.curClassroom.Id;
             item.TodoItemId = _model.Id;
 
             sts.send(uri, item, () => 
             {
                 
             });
-            Navigation.PopAsync();
+            await Navigation.PopAsync();
         }
 
         void HasDueDateSwitch_OnToggle(object sender, ToggledEventArgs e)
         {
-            if (HasDueDateSwitch.IsEnabled)
+            if (HasDueDateSwitch.IsToggled)
             {
-                DueDate_DatePicker.IsEnabled = true;
+                //DueDate_DatePicker.IsVisible = true;
+                //DueDate_TimePicker.IsVisible = true;
                 DueDate_TimePicker.IsEnabled = true;
+                DueDate_DatePicker.IsEnabled = true;
+                //DueDate_TimePicker.FadeTo(1.0, 250);
+                //DueDate_DatePicker.FadeTo(1.0, 250);
+                DueDate_TimePicker.BackgroundColor = new Color(1, 1, 1);
+                DueDate_DatePicker.BackgroundColor = new Color(1, 1, 1);
             }
             else
             {
-                DueDate_DatePicker.IsEnabled = false;
+                //DueDate_DatePicker.IsVisible = false;
+                //DueDate_TimePicker.IsVisible = false;
                 DueDate_TimePicker.IsEnabled = false;
+                DueDate_DatePicker.IsEnabled = false;
+                //DueDate_TimePicker.FadeTo(0.0, 250);
+                //DueDate_DatePicker.FadeTo(0.0, 250);
+                DueDate_TimePicker.BackgroundColor = new Color(0.90, 0.90, 0.90);
+                DueDate_DatePicker.BackgroundColor = new Color(0.90, 0.90, 0.90);
             }
         }
     }

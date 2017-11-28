@@ -21,12 +21,21 @@ namespace cs441_project
 
         public async void send(Uri uri, object item, Action HandleSuccess)
         {
+            
             //serialize object and make it ready for sending over the internet
             var json = JsonConvert.SerializeObject(item);
             var content = new StringContent(json, Encoding.UTF8, "application/json"); //StringContent contains http headers
 
             //wait for response, then handle it
-            responseMessage = await App.client.PostAsync(uri, content); //post
+            try
+            {
+                responseMessage = await App.client.PostAsync(uri, content); //post
+            }
+            catch (Exception ex)
+            {
+                await bindingPage.DisplayAlert("Unexpected Error", ex.Message, "OK");
+                return;
+            }
             if (responseMessage.IsSuccessStatusCode)
             { //success
                 //get our JSON response and convert it to a ResponseItem object
@@ -48,7 +57,7 @@ namespace cs441_project
                     }
                     catch (Exception ex)
                     {
-                        await bindingPage.DisplayAlert("Unexpected Parsing Error", ex.Message, "OK");
+                        await bindingPage.DisplayAlert("Unexpected Error", ex.Message, "OK");
                     }
                 }
                 else //else, display error
@@ -103,7 +112,7 @@ namespace cs441_project
         public string Password { get; set; }
     }
 
-    // add "to do" item to classroom database
+    // add to do item to classroom database
     public class CreateTodoItem
     {
         public readonly string Command = "CREATE_TODO_ITEM";
@@ -112,6 +121,22 @@ namespace cs441_project
         public string Description { get; set; }
         //which classroom/database to interact with
         public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    // edit to do item
+    public class EditTodoItem
+    {
+        public readonly string Command = "EDIT_TODO_ITEM";
+        public DateTime DueDateTime { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //which to do item to interact with
+        public string TodoItemId { get; set; }
         //validate user's permission
         public string Email { get; set; }
         public string Password { get; set; }

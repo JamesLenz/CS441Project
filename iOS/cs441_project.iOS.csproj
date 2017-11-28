@@ -161,6 +161,33 @@
     <BundleResource Include="Resources\Todo_Icon%401x.png" />
     <BundleResource Include="Resources\Todo_Icon%402x.png" />
     <BundleResource Include="Resources\Todo_Icon%403x.png" />
+    <BundleResource Include="Resources\Chat_Icon%401x.png" />
+    <BundleResource Include="Resources\Chat_Icon%402x.png" />
+    <BundleResource Include="Resources\Chat_Icon%403x.png" />
+    <BundleResource Include="Resources\Forum_Icon%401x.png" />
+    <BundleResource Include="Resources\Forum_Icon%402x.png" />
+    <BundleResource Include="Resources\Forum_Icon%403x.png" />
+    <BundleResource Include="Resources\Account_Icon%401x.png" />
+    <BundleResource Include="Resources\Account_Icon%402x.png" />
+    <BundleResource Include="Resources\Account_Icon%403x.png" />
+    <BundleResource Include="Resources\Add_Icon%401x.png" />
+    <BundleResource Include="Resources\Add_Icon%402x.png" />
+    <BundleResource Include="Resources\Add_Icon%403x.png" />
+    <BundleResource Include="Resources\Settings_Icon%401x.png" />
+    <BundleResource Include="Resources\Settings_Icon%402x.png" />
+    <BundleResource Include="Resources\Settings_Icon%403x.png" />
+    <BundleResource Include="Resources\Users_Icon%401x.png" />
+    <BundleResource Include="Resources\Users_Icon%402x.png" />
+    <BundleResource Include="Resources\Users_Icon%403x.png" />
+    <BundleResource Include="Resources\Options_Icon%401x.png" />
+    <BundleResource Include="Resources\Options_Icon%402x.png" />
+    <BundleResource Include="Resources\Options_Icon%403x.png" />
+    <BundleResource Include="Resources\Enter_Icon%401x.png" />
+    <BundleResource Include="Resources\Enter_Icon%402x.png" />
+    <BundleResource Include="Resources\Enter_Icon%403x.png" />
+    <BundleResource Include="Resources\Trashcan_Icon%401x.png" />
+    <BundleResource Include="Resources\Trashcan_Icon%402x.png" />
+    <BundleResource Include="Resources\Trashcan_Icon%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

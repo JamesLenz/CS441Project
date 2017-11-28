@@ -8,7 +8,7 @@ namespace cs441_project
         public static HttpClient client;
         public static string userEmail = null;
         public static string userPassword = null;
-        public static string curDatabaseId = null;
+        public static ClassroomInfoItem curClassroom;
 
         public App()
         {

@@ -11,6 +11,16 @@ namespace cs441_project
         {
             NavigationPage.SetHasNavigationBar(this, true);
             InitializeComponent();
+
+            Children.Add(new testPage1(this));
+            Children.Add(new testPage2(this));
+            Children.Add(new testPage3(this));
+            Children.Add(new UsersPage(this));
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
         }
     }
 }

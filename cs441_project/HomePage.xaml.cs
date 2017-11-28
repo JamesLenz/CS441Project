@@ -21,19 +21,20 @@ namespace cs441_project
 
             sts = new SendToServer(this);
 
-            Title = "My Classrooms";
-
-            ToolbarItems.Add(new ToolbarItem("Join", "", ToolbarItem_OnJoin, ToolbarItemOrder.Primary));
+            ToolbarItems.Add(new ToolbarItem("Join", "Enter_Icon", ToolbarItem_OnJoin, ToolbarItemOrder.Primary));
+            ToolbarItems.Add(new ToolbarItem("Create", "Add_Icon", ToolbarItem_OnCreate, ToolbarItemOrder.Primary));
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
+            Title = "My Classrooms";
+
             Handle_Refreshing(null, null);
         }
 
-        void Handle_Refreshing(object sender, System.EventArgs e)
+        public void Handle_Refreshing(object sender, EventArgs e)
         {
             _ClassroomListViewItems.Clear();
             GetMyClassrooms();
@@ -41,25 +42,39 @@ namespace cs441_project
             ClassroomListView.IsRefreshing = false;
         }
 
-        async void ClassroomListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        public async void ClassroomListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            App.curDatabaseId = ((ClassroomInfoItem)e.Item).Id.ToString().PadLeft(10, '0');
+            var classroom = (ClassroomInfoItem)e.Item;
+            App.curClassroom = new ClassroomInfoItem(classroom);
             await Navigation.PushAsync(new ClassroomPage()); //goto classroom page
-            ((ListView)sender).SelectedItem = null;
+            ((ListView)sender).Unfocus();
         }
 
-        async void ToolbarItem_OnJoin()
+        public async void ToolbarItem_OnJoin()
         {
-            /*var item        = new JoinClassroomItem();
-            item.DatabaseId = "na";
-            item.Email      = App.userEmail;
-            item.Password   = App.userPassword;
-
-            sts.send(uri, item, () => {
-                Handle_Refreshing(null, null);
-                testLabel.Text = "Joined";
-            });*/
             await Navigation.PushAsync(new JoinClassroomPage());
+        }
+
+        public async void ToolbarItem_OnCreate()
+        {
+            //create the item we want to send
+            var item = new CreateClassroomItem();
+            item.Email = App.userEmail;
+            item.Password = App.userPassword;
+            item.Title = "Title";
+            item.Description = "Description";
+
+            if (item.Title == null)
+            {
+                await DisplayAlert("Error", "Cannot create a classroom without a title", "OK");
+                return;
+            }
+
+            sts.send(uri, item, () =>
+            {
+                testLabel.Text = sts.responseItem.Success.ToString();
+                Handle_Refreshing(null, null);
+            });
         }
 
         public void GetMyClassrooms()
@@ -89,29 +104,7 @@ namespace cs441_project
             });
         }
 
-        public async void CreateClassroomButton_OnClick(object sender, EventArgs e)
-        {
-            //create the item we want to send
-            var item         = new CreateClassroomItem();
-            item.Email       = App.userEmail;
-            item.Password    = App.userPassword;
-            item.Title       = "Title";
-            item.Description = "Description";
-
-            if (item.Title == null)
-            {
-                await DisplayAlert("Error", "Cannot create a classroom without a title", "OK");
-                return;
-            }
-
-            sts.send(uri, item, () => 
-            {
-                testLabel.Text = sts.responseItem.Success.ToString();
-                Handle_Refreshing(null, null);
-            });
-        }
-
-        async void ClassroomItemCell_OnLeave(object sender, System.EventArgs e)
+        public async void ClassroomItemCell_OnLeave(object sender, System.EventArgs e)
         {
             var classroom = (ClassroomInfoItem)((MenuItem)sender).BindingContext;
             bool leaveResponse = false;
