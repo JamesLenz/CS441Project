@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="cs441_project.InvitePage">
+    <StackLayout
+        Spacing="3"
+        BackgroundColor="BlanchedAlmond">
+        <Label Text="testLabel" FontSize="10" x:Name="testLabel"/>
+
+        <Frame
+            BackgroundColor="White"
+            Margin="25,25,25,25"
+            HasShadow="true">
+            <StackLayout>
+            <Label
+                Text="Please enter the email of the user you want to invite"/>
+            <Entry
+                Margin="0,5,0,0"
+                HeightRequest="50"
+                x:Name="Email_Entry"
+                Placeholder="User Email"
+                Keyboard="Email"/>
+            <Button
+                Text="Invite User"
+                Margin="25,15,25,0"
+                HeightRequest="50"
+                FontSize="15"
+                TextColor="White"
+                x:Name="Invite_Button"
+                Clicked="InviteButton_OnClicked"
+                BackgroundColor="Orange"/>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>

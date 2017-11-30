@@ -10,7 +10,6 @@ using Xamarin.Forms.Xaml;
 
 namespace cs441_project
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TodoDetailsView : ContentPage
 	{
         private SendToServer sts;
@@ -23,15 +22,13 @@ namespace cs441_project
             InitializeComponent();
 
             _model = new TodoItem(model);
-            Description_Editor.Text = _model.Description;
-            Title_Entry.Text        = _model.Title;
-            DueDate_DatePicker.Date = _model.DueDateTime.Date;
-            DueDate_TimePicker.Time = _model.DueDateTime.TimeOfDay;
+            Description_Editor.Text    = _model.Description;
+            Title_Entry.Text           = _model.Title;
+            DueDate_DatePicker.Date    = _model.DueDateTime.Date;
+            DueDate_TimePicker.Time    = _model.DueDateTime.TimeOfDay;
+            HasDueDateSwitch.IsToggled = _model.HasDueDate;
 
             this.isNew = isNew;
-
-            DueDate_DatePicker.Date = DateTime.Now.Date;
-            DueDate_TimePicker.Time = DateTime.Now.TimeOfDay;
 
             sts = new SendToServer(this);
 
@@ -132,10 +129,10 @@ namespace cs441_project
                 //DueDate_TimePicker.IsVisible = true;
                 DueDate_TimePicker.IsEnabled = true;
                 DueDate_DatePicker.IsEnabled = true;
-                //DueDate_TimePicker.FadeTo(1.0, 250);
-                //DueDate_DatePicker.FadeTo(1.0, 250);
-                DueDate_TimePicker.BackgroundColor = new Color(1, 1, 1);
-                DueDate_DatePicker.BackgroundColor = new Color(1, 1, 1);
+                DueDate_TimePicker.FadeTo(1.0, 250);
+                DueDate_DatePicker.FadeTo(1.0, 250);
+                //DueDate_TimePicker.BackgroundColor = new Color(1, 1, 1);
+                //DueDate_DatePicker.BackgroundColor = new Color(1, 1, 1);
             }
             else
             {
@@ -143,10 +140,10 @@ namespace cs441_project
                 //DueDate_TimePicker.IsVisible = false;
                 DueDate_TimePicker.IsEnabled = false;
                 DueDate_DatePicker.IsEnabled = false;
-                //DueDate_TimePicker.FadeTo(0.0, 250);
-                //DueDate_DatePicker.FadeTo(0.0, 250);
-                DueDate_TimePicker.BackgroundColor = new Color(0.90, 0.90, 0.90);
-                DueDate_DatePicker.BackgroundColor = new Color(0.90, 0.90, 0.90);
+                DueDate_TimePicker.FadeTo(0.6, 250);
+                DueDate_DatePicker.FadeTo(0.6, 250);
+                //DueDate_TimePicker.BackgroundColor = new Color(0.90, 0.90, 0.90);
+                //DueDate_DatePicker.BackgroundColor = new Color(0.90, 0.90, 0.90);
             }
         }
     }

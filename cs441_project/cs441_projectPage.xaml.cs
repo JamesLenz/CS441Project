@@ -39,12 +39,6 @@ namespace cs441_project
 
             sts.send(uri, item, async () => 
             {
-                testLabel.Text = sts.responseItem.Success.ToString();
-                //todo:remove this page from navigation stack,
-                //     back button should not work because
-                //     there should be a dedicated log off button
-
-                //login was successful, so store the successful login info for future use. (these variables are global to the app)
                 App.userEmail = item.Email;
                 App.userPassword = item.Password;
 

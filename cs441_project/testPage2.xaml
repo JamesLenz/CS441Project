@@ -26,6 +26,9 @@
             IsPullToRefreshEnabled="true"
             Refreshing="Handle_Refreshing"
             Margin="15,0,15,0">
+            <ListView.Margin>
+
+            </ListView.Margin>
             <ListView.ItemTemplate>
             <DataTemplate>
             <ViewCell x:Name="TodoItemCell">

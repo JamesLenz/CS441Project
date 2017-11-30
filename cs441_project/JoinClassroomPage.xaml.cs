@@ -24,6 +24,12 @@ namespace cs441_project
 
         async void JoinButton_OnClicked(object sender, EventArgs e)
         {
+            if (ClassroomId_Entry.Text == null || ClassroomId_Entry.Text == "")
+            {
+                await DisplayAlert("Error", "Please enter a classroom ID", "OK");
+                return;
+            }
+
             if (ClassroomId_Entry.Text.Length != 10)
             {
                 await DisplayAlert("Error", "A classroom ID must contain exactly 10 digits", "OK");

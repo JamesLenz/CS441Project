@@ -17,7 +17,6 @@
                 FontAttributes="Bold"/>
             <Entry 
                 x:Name="Title_Entry"
-                HeightRequest="30"
                 Placeholder="Title"/>
             <Label 
                 Text="Description" 
@@ -40,11 +39,17 @@
                 FontSize="16" 
                 FontAttributes="Bold"/>
             <Frame
-                BackgroundColor="White"
                 CornerRadius="3"
+                BackgroundColor="Transparent"
                 OutlineColor="#ccc"
                 HasShadow="false"
                 Padding="5">
+                <Frame.BackgroundColor>
+                    <OnPlatform
+                        x:TypeArguments="Color"
+                        iOS="White"
+                        Android="Transparent"/>
+                </Frame.BackgroundColor>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Has Due Date " VerticalOptions="Center" FontAttributes="Bold" FontSize="14"/>
                     <Switch x:Name="HasDueDateSwitch" IsToggled="true" Toggled="HasDueDateSwitch_OnToggle" HorizontalOptions="EndAndExpand"/>

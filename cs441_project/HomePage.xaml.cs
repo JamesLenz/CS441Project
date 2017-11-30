@@ -104,12 +104,13 @@ namespace cs441_project
             });
         }
 
-        public async void ClassroomItemCell_OnLeave(object sender, System.EventArgs e)
+        public async void ClassroomItemCell_OnLeave(object sender, EventArgs e)
         {
             var classroom = (ClassroomInfoItem)((MenuItem)sender).BindingContext;
             bool leaveResponse = false;
             bool isOwner = false;
-            if (classroom.OwnerEmail == App.userEmail)
+            
+            if (classroom.OwnerEmail.ToLower() == App.userEmail.ToLower())
             {
                 isOwner = true;
                 leaveResponse = await DisplayAlert("Delete Classroom", "Are you sure you want to delete the classroom '" + classroom.Title + "' and all of its data forever?", "Yes", "No");

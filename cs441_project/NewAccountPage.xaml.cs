@@ -10,12 +10,15 @@ namespace cs441_project
     {
         private SendToServer sts;
         private Uri uri = new Uri("http://54.193.30.236/index.py");
+        private Page thisPage;
 
         public NewAccountPage()
         {
             InitializeComponent();
 
             sts = new SendToServer(this);
+
+            thisPage = this;
 
             Title = "New Account";
         }
@@ -45,14 +48,10 @@ namespace cs441_project
             item.Email = Email_Entry.Text;
             item.Password = Password_Entry.Text;
 
-            sts.send(uri, item, () => 
+            sts.send(uri, item, async () => 
             {
-                testLabel.Text = sts.responseItem.Success.ToString();
-                //todo:if no errors, display confirmation
-                //remove this page and the login page from the navigation stack,
-                //  the back button should not go back and there should be a
-                //  dedicated log off button
-                //login the user as well
+                await DisplayAlert("Success", "Account successfully created", "OK");
+                await Navigation.PopAsync();
             });
         }
     }

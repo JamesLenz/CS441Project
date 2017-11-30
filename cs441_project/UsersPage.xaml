@@ -12,9 +12,63 @@
             iOS="Users_Icon.png" />
     </ContentPage.Icon>
 
-    <StackLayout>
-        <Label 
-           Text="People"/>
+    <StackLayout
+        Margin="0,0,0,0">
+
+        <Label x:Name="testLabel" Text="testLabel" FontSize="10"/>
+
+        <Frame Margin="15,0,15,0" Padding="5" HasShadow="false" CornerRadius="3" IsClippedToBounds="true" BackgroundColor="White">
+        <ListView 
+            BackgroundColor="Transparent"
+            x:Name="UsersListView" 
+            SeparatorVisibility="Default"
+            HasUnevenRows="false"
+            ItemTapped="OnSelect"
+            IsPullToRefreshEnabled="true"
+            Refreshing="Handle_Refreshing"
+            Margin="0">
+            <ListView.ItemTemplate>
+            <DataTemplate>
+            <ViewCell x:Name="UserItemCell">
+            <ViewCell.ContextActions>
+                <MenuItem
+                    Clicked="UserItemCell_OnDrop" 
+                    CommandParameter="{Binding .}"
+                    Text="Drop"
+                    IsDestructive="{Binding isNotOwner}"
+                    IsEnabled="{Binding isNotOwner}"/>
+             </ViewCell.ContextActions>
+            <ViewCell.View>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            Text="{Binding Name}"
+                            Margin="15,5,0,0"/>
+                        <!--<Image 
+                            Scale="0.5"
+                            Margin="-10,0,0,0"
+                            IsVisible="{Binding isOwner}"
+                            Source="OwnerStar_Icon.png"/>-->
+                        <Label
+                            Text="(Instructor)"
+                            IsVisible="{Binding isOwner}"
+                            TextColor="Red"
+                            VerticalOptions="Center"
+                            Margin="0,6,0,0"
+                            FontSize="10"/>
+                    </StackLayout>
+                        <Label
+                            Text="{Binding Email}"
+                            Margin="15,-7,0,0"
+                            TextColor="#888"
+                            FontSize="12"/>
+                </StackLayout>
+            </ViewCell.View>
+            </ViewCell>
+            </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        </Frame>
     </StackLayout>
     
 </ContentPage>

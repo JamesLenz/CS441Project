@@ -219,4 +219,37 @@ namespace cs441_project
     }
 
     //
+    public class GetUsersItem
+    {
+        public readonly string Command = "GET_USERS";
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    //
+    public class InviteUserItem
+    {
+        public readonly string Command = "INVITE_USER";
+        public string InviteEmail { get; set; }
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    //
+    public class DropUserItem
+    {
+        public readonly string Command = "DROP_USER";
+        public string DropEmail { get; set; }
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
 }

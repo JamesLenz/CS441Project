@@ -26,7 +26,7 @@ namespace cs441_project
 
             _ContainerPage = containerPage;
 
-            if (App.curClassroom.OwnerEmail == App.userEmail)
+            if (App.curClassroom.OwnerEmail.ToLower() == App.userEmail.ToLower())
                 isOwner = true;
 
             TodoListView.ItemsSource = _TodoListViewItems;
@@ -104,6 +104,7 @@ namespace cs441_project
                                 todoItemList[i].HasDueDate = false;
                             else
                                 todoItemList[i].HasDueDate = true;
+
                             _TodoListViewItems.Add(todoItemList[i]);
                         }
                     }

@@ -1,15 +1,14 @@
 ﻿<Properties StartupConfiguration="{0126277C-C1E4-4B1A-8D0D-704DE36CD2F7}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="cs441_project/testPage2.xaml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="cs441_project Status">
     <Files>
-      <File FileName="cs441_project/Changelog.txt" Line="5" Column="44" />
-      <File FileName="cs441_project/ServerItems.cs" Line="139" Column="22" />
-      <File FileName="cs441_project/testPage2.xaml" Line="7" Column="37" />
-      <File FileName="cs441_project/testPage2.xaml.cs" Line="13" Column="9" />
-      <File FileName="cs441_project/TodoDetailsView.xaml" Line="31" Column="40" />
-      <File FileName="cs441_project/TodoDetailsView.xaml.cs" Line="97" Column="28" />
-      <File FileName="cs441_project/HomePage.xaml" Line="60" Column="20" />
-      <File FileName="cs441_project/HomePage.xaml.cs" Line="105" Column="10" />
-      <File FileName="cs441_project/ClassroomPage.xaml.cs" Line="18" Column="47" />
+      <File FileName="cs441_project/Changelog.txt" Line="6" Column="19" />
+      <File FileName="cs441_project/ServerItems.cs" Line="248" Column="46" />
+      <File FileName="cs441_project/UsersPage.xaml" Line="27" Column="42" />
+      <File FileName="cs441_project/UsersPage.xaml.cs" Line="55" Column="10" />
+      <File FileName="cs441_project/HomePage.xaml" Line="21" Column="27" />
+      <File FileName="cs441_project/HomePage.xaml.cs" Line="111" Column="34" />
+      <File FileName="cs441_project/UserItem.cs" Line="13" Column="42" />
+      <File FileName="cs441_project Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.cs441__project.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.CFE51F38-0B2E-47F4-9AA0-49D058F2687F" />
@@ -21,5 +20,5 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.cs441__project.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Intel_Atom_x86_64" />
+  <MonoDevelop.Ide.ItemProperties.cs441__project.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.24f1bc0f" />
 </Properties>
