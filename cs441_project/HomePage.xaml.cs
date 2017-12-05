@@ -34,6 +34,39 @@ namespace cs441_project
             Handle_Refreshing(null, null);
         }
 
+        public void ClassroomItem_BindingContextChanged(object sender, EventArgs e)
+        {
+            if (((ViewCell)sender).BindingContext == null)
+            {
+                return;
+            }
+
+            bool isOwner = ((ClassroomInfoItem)((ViewCell)sender).BindingContext).OwnerEmail.ToLower() == App.userEmail.ToLower();
+            var leaveAction = new MenuItem { Text = isOwner ? "Delete" : "Leave", IsDestructive = true };
+            leaveAction.SetBinding(MenuItem.CommandParameterProperty, new Binding("."));
+            leaveAction.Clicked += (sender_, eventArgs_) => {
+                var mi = ((MenuItem)sender_);
+
+                ClassroomItemCell_OnLeave(mi, eventArgs_);
+            };
+
+            ((ViewCell)sender).ContextActions.Add(leaveAction);
+
+            if (isOwner)
+            {
+                var editAction = new MenuItem { Text = "Edit" };
+                editAction.SetBinding(MenuItem.CommandParameterProperty, new Binding("."));
+                editAction.Clicked += async (sender_, eventArgs_) =>
+                {
+                    var mi = ((MenuItem)sender_);
+
+                    await Navigation.PushAsync(new ClassroomDetailsPage((ClassroomInfoItem)mi.BindingContext));
+                };
+
+                ((ViewCell)sender).ContextActions.Add(editAction);
+            }
+        }
+
         public void Handle_Refreshing(object sender, EventArgs e)
         {
             _ClassroomListViewItems.Clear();
@@ -57,24 +90,7 @@ namespace cs441_project
 
         public async void ToolbarItem_OnCreate()
         {
-            //create the item we want to send
-            var item = new CreateClassroomItem();
-            item.Email = App.userEmail;
-            item.Password = App.userPassword;
-            item.Title = "Title";
-            item.Description = "Description";
-
-            if (item.Title == null)
-            {
-                await DisplayAlert("Error", "Cannot create a classroom without a title", "OK");
-                return;
-            }
-
-            sts.send(uri, item, () =>
-            {
-                testLabel.Text = sts.responseItem.Success.ToString();
-                Handle_Refreshing(null, null);
-            });
+            await Navigation.PushAsync(new ClassroomDetailsPage(null));
         }
 
         public void GetMyClassrooms()
@@ -127,14 +143,14 @@ namespace cs441_project
             object item;
             if (isOwner)
             {
-                item = new DeleteClassroomItem();
+                item                                   = new DeleteClassroomItem();
                 ((DeleteClassroomItem)item).Email      = App.userEmail;
                 ((DeleteClassroomItem)item).Password   = App.userPassword;
                 ((DeleteClassroomItem)item).DatabaseId = classroom.Id;
             }
             else
             {
-                item = new LeaveClassroomItem();
+                item                                  = new LeaveClassroomItem();
                 ((LeaveClassroomItem)item).Email      = App.userEmail;
                 ((LeaveClassroomItem)item).Password   = App.userPassword;
                 ((LeaveClassroomItem)item).DatabaseId = classroom.Id;

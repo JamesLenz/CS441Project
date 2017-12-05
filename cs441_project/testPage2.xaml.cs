@@ -46,8 +46,7 @@ namespace cs441_project
 
         public async void ToolbarItem_OnAdd()
         {
-            var model = new TodoItem();
-            await Navigation.PushAsync(new TodoDetailsView(model, true), true);
+            await Navigation.PushAsync(new TodoDetailsView(null), true);
 
             Handle_Refreshing(null, null);
         }
@@ -60,7 +59,7 @@ namespace cs441_project
                 return;
             }
             var model = (TodoItem)e.Item;
-            await Navigation.PushAsync(new TodoDetailsView(model, false), true);
+            await Navigation.PushAsync(new TodoDetailsView(model), true);
         }
 
         public void OnDoneToggled(object sender, ToggledEventArgs e)

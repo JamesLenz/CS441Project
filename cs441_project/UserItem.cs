@@ -11,6 +11,5 @@ namespace cs441_project
         public string Name { get; set; }
         public string Email { get; set; }
         public bool isOwner { get; set; }
-        public bool isNotOwner { get { return !isOwner; } }
     }
 }

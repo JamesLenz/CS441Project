@@ -63,6 +63,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClassroomDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -105,6 +109,9 @@
     <Compile Include="UserItem.cs" />
     <Compile Include="InvitePage.xaml.cs">
       <DependentUpon>InvitePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClassroomDetailsPage.xaml.cs">
+      <DependentUpon>ClassroomDetailsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

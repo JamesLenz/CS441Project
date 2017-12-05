@@ -37,6 +37,24 @@ namespace cs441_project
             _ContainerPage.Title = "People";
         }
 
+        public void UserItem_BindingContextChanged(object sender, EventArgs e)
+        {
+            if (((ViewCell)sender).BindingContext == null || ((UserItem)((ViewCell)sender).BindingContext).isOwner || App.userEmail.ToLower() != App.curClassroom.OwnerEmail.ToLower())
+            {
+                return;
+            }
+
+            var dropAction = new MenuItem { Text = "Drop", IsDestructive = true };
+            dropAction.SetBinding(MenuItem.CommandParameterProperty, new Binding("."));
+            dropAction.Clicked += (sender_, eventArgs_) => {
+                var mi = ((MenuItem)sender_);
+
+                UserItemCell_OnDrop(sender_, eventArgs_);
+            };
+
+            ((ViewCell)sender).ContextActions.Add(dropAction);
+        }
+
         public async void ToolbarItem_OnInvite()
         {
             await Navigation.PushAsync(new InvitePage());

@@ -29,15 +29,17 @@
             Margin="0">
             <ListView.ItemTemplate>
             <DataTemplate>
-            <ViewCell x:Name="UserItemCell">
-            <ViewCell.ContextActions>
+            <ViewCell 
+                x:Name="UserItemCell"
+                BindingContextChanged="UserItem_BindingContextChanged">
+            <!--<ViewCell.ContextActions>
                 <MenuItem
                     Clicked="UserItemCell_OnDrop" 
                     CommandParameter="{Binding .}"
                     Text="Drop"
                     IsDestructive="{Binding isNotOwner}"
                     IsEnabled="{Binding isNotOwner}"/>
-             </ViewCell.ContextActions>
+             </ViewCell.ContextActions>-->
             <ViewCell.View>
                 <StackLayout>
                     <StackLayout Orientation="Horizontal">
@@ -52,7 +54,8 @@
                         <Label
                             Text="(Instructor)"
                             IsVisible="{Binding isOwner}"
-                            TextColor="Red"
+                            FontAttributes="Bold"
+                            TextColor="#66f"
                             VerticalOptions="Center"
                             Margin="0,6,0,0"
                             FontSize="10"/>

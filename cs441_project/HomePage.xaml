@@ -19,14 +19,16 @@
             ItemTapped="ClassroomListView_ItemTapped">
             <ListView.ItemTemplate>
             <DataTemplate>
-            <ViewCell x:Name="ClassroomItemCell">
-                <ViewCell.ContextActions>
+            <ViewCell 
+                x:Name="ClassroomItemCell"
+                BindingContextChanged="ClassroomItem_BindingContextChanged">
+                <!--<ViewCell.ContextActions>
                     <MenuItem
                         Clicked="ClassroomItemCell_OnLeave" 
                         CommandParameter="{Binding .}"
                         Text="Leave"
                         IsDestructive="True" />
-                 </ViewCell.ContextActions>
+                 </ViewCell.ContextActions>-->
                 <StackLayout>
                     <Frame
                         BackgroundColor="White"
@@ -40,17 +42,26 @@
                                 Text="{Binding Title}" 
                                 FontSize="16"
                                 FontAttributes="Bold"
-                                Margin="0,-5,0,0"/>
+                                Margin="0,0,0,0"/>
                             <Label
                                 Text="{Binding Description}" 
                                 FontSize="12"
                                 TextColor="Black"
                                 Margin="0,-5,0,0"/>
-                            <Label
-                                Text="{Binding OwnerName, StringFormat='Instructor: \{0\}'}" 
-                                FontSize="10"
-                                TextColor="#888888"
-                                Margin="0,-5,0,0"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    Text="{Binding OwnerName, StringFormat='Instructor: \{0\}'}" 
+                                    FontSize="10"
+                                    TextColor="#888"
+                                    Margin="0,0,0,0"/>
+                                <Label
+                                    IsVisible="{Binding curUserIsOwner}" 
+                                    Text="(You)"
+                                    FontSize="10"
+                                    FontAttributes="Bold"
+                                    TextColor="#66f"
+                                    Margin="-5,0,0,0"/>
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
                 </StackLayout>

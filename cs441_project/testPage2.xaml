@@ -64,7 +64,7 @@
                             <StackLayout 
                                 Orientation="Horizontal" 
                                 VerticalOptions="End">
-                                <Label
+                                <!--<Label
                                     VerticalOptions="Center"
                                     TextColor="#888888"
                                     Margin="0,0,0,-5"
@@ -76,7 +76,7 @@
                                     VerticalOptions="End"
                                     IsToggled="{Binding Done}"
                                     Toggled="OnDoneToggled"
-                                    BindingContext="{Binding Source={x:Reference TodoItemCell}, Path=BindingContext}"/>
+                                    BindingContext="{Binding Source={x:Reference TodoItemCell}, Path=BindingContext}"/>-->
                                 <Label 
                                     Text="{Binding CreatedDateTime, StringFormat='{}{0:\\P\\o\\s\\t\\e\\d \\o\\n MMMM dd, yyyy a\\t h:mm tt}'}" 
                                     FontSize="12"

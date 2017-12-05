@@ -17,26 +17,40 @@ namespace cs441_project
         private TodoItem _model;
         private bool isNew = true;
 
-		public TodoDetailsView (TodoItem model, bool isNew)
+		public TodoDetailsView (TodoItem model)
         {
             InitializeComponent();
-
-            _model = new TodoItem(model);
-            Description_Editor.Text    = _model.Description;
-            Title_Entry.Text           = _model.Title;
-            DueDate_DatePicker.Date    = _model.DueDateTime.Date;
-            DueDate_TimePicker.Time    = _model.DueDateTime.TimeOfDay;
-            HasDueDateSwitch.IsToggled = _model.HasDueDate;
-
-            this.isNew = isNew;
 
             sts = new SendToServer(this);
 
             Title = "New Todo Item";
 
-            if (!this.isNew)
+            if (model != null)
+            {
+                isNew = false;
+                _model = new TodoItem(model);
+                Description_Editor.Text    = _model.Description;
+                Title_Entry.Text           = _model.Title;
+                DueDate_DatePicker.Date    = _model.DueDateTime.Date;
+                DueDate_TimePicker.Time    = _model.DueDateTime.TimeOfDay;
+                HasDueDateSwitch.IsToggled = _model.HasDueDate;
+
                 ToolbarItems.Add(new ToolbarItem("Delete", "Trashcan_Icon", ToolbarItem_OnDelete, ToolbarItemOrder.Primary));
+            }
+            else
+            {
+                isNew = true;
+            }
+                
 		}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            TitleEntry_TextChanged(null, null);
+            DescriptionEditor_TextChanged(null, null);
+        }
 
         public async void Button_OnSave(object sender, EventArgs e)
         {
@@ -145,6 +159,36 @@ namespace cs441_project
                 //DueDate_TimePicker.BackgroundColor = new Color(0.90, 0.90, 0.90);
                 //DueDate_DatePicker.BackgroundColor = new Color(0.90, 0.90, 0.90);
             }
+        }
+
+        void TitleEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Title_Entry.Text == null)
+            {
+                TitleCounter_Label.Text = "0/100";
+                return;
+            }
+
+            if (Title_Entry.Text.Length > 100)
+            {
+                Title_Entry.Text = Title_Entry.Text.Substring(0, 100);
+            }
+            TitleCounter_Label.Text = Title_Entry.Text.Length.ToString() + "/100";
+        }
+
+        void DescriptionEditor_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Description_Editor.Text == null)
+            {
+                DescriptionCounter_Label.Text = "0/1000";
+                return;
+            }
+
+            if (Description_Editor.Text.Length > 1000)
+            {
+                Description_Editor.Text = Description_Editor.Text.Substring(0, 1000);
+            }
+            DescriptionCounter_Label.Text = Description_Editor.Text.Length.ToString() + "/1000";
         }
     }
 }

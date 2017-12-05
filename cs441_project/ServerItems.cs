@@ -88,7 +88,7 @@ namespace cs441_project
     //     Command Items     //
     //=======================//
 
-    // ask the server to check if email and password are in the database
+    // check if email and password are in the database
     public class ValidateUserItem
     {
         public readonly string Command = "VALIDATE_USER"; //every item must have a "Command" data member
@@ -96,14 +96,14 @@ namespace cs441_project
         public string Password { get; set; }
     }
 
-    // ask the server to check if email is in database and if it is, email the password
+    // check if email is in database and if it is, email the password
     public class ForgotPasswordItem
     {
         public readonly string Command = "FORGOT_PASSWORD";
         public string Email { get; set; }
     }
 
-    // ask the server to add a new user
+    // add a new user
     public class AddUserItem
     {
         public readonly string Command = "ADD_USER";
@@ -198,6 +198,19 @@ namespace cs441_project
         public string Password { get; set; }
     }
 
+    // edit classroom
+    public class EditClassroomItem
+    {
+        public readonly string Command = "EDIT_CLASSROOM";
+        public string Title { get; set; }
+        public string Description { get; set; }
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
     // delete classroom
     public class DeleteClassroomItem
     {
@@ -209,7 +222,7 @@ namespace cs441_project
         public string Password { get; set; }
     }
 
-    //
+    // get classrooms that the user is joined to
     public class GetUserClassroomsItem
     {
         public readonly string Command = "GET_USER_CLASSROOMS";
@@ -218,7 +231,7 @@ namespace cs441_project
         public string Password { get; set; }
     }
 
-    //
+    // get all members in the current classroom
     public class GetUsersItem
     {
         public readonly string Command = "GET_USERS";
@@ -229,7 +242,7 @@ namespace cs441_project
         public string Password { get; set; }
     }
 
-    //
+    // send an email inviting them to join the current classroom
     public class InviteUserItem
     {
         public readonly string Command = "INVITE_USER";
@@ -241,7 +254,7 @@ namespace cs441_project
         public string Password { get; set; }
     }
 
-    //
+    // kick a member out of the current classroom
     public class DropUserItem
     {
         public readonly string Command = "DROP_USER";
@@ -252,4 +265,5 @@ namespace cs441_project
         public string Email { get; set; }
         public string Password { get; set; }
     }
+
 }

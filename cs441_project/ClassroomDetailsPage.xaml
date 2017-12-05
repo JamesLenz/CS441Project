@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="cs441_project.ClassroomDetailsPage"
+    BackgroundColor="BlanchedAlmond">
+    <StackLayout 
+        Orientation="Vertical"
+        Margin="15,0,15,0">
+        
+        <Label x:Name="testLabel" Text="testLabel" FontSize="10"/>
+
+        <Label 
+            Text="Title" 
+            FontSize="16"
+            FontAttributes="Bold"/>
+        <Entry 
+            x:Name="Title_Entry"
+            Placeholder="Title"
+            HeightRequest="45"
+            TextChanged="TitleEntry_TextChanged"/>
+        <Label
+            Text="?/?"
+            x:Name="TitleCounter_Label"
+            BackgroundColor="Transparent"
+            FontSize="10"
+            TextColor="#ccc"
+            Margin="0,-20,5,0"
+            HorizontalOptions="End"/>
+        <Label 
+            Text="Description" 
+            FontSize="16" 
+            FontAttributes="Bold"/>
+        <Frame
+            HasShadow="false"
+            OutlineColor="#ccc"
+            CornerRadius="3"
+            BackgroundColor="BlanchedAlmond"
+            IsClippedToBounds="true"
+            Padding="0">
+            <StackLayout>
+                <Editor 
+                    x:Name="Description_Editor"
+                    FontSize="14"
+                    TextChanged="DescriptionEditor_TextChanged"
+                    HeightRequest="100"/>
+                <Label
+                    Text="?/?"
+                    x:Name="DescriptionCounter_Label"
+                    BackgroundColor="Transparent"
+                    FontSize="10"
+                    TextColor="#ccc"
+                    Margin="0,-20,5,0"
+                    HorizontalOptions="End"/>
+            </StackLayout>
+        </Frame>
+        <Button 
+            x:Name="SaveButton" 
+            Text="Save" 
+            Clicked="Button_OnSave"
+            BackgroundColor="Orange"
+            TextColor="White"
+            Margin="25,15,25,0"
+            HeightRequest="50"
+            FontSize="15"/>
+    </StackLayout>
+</ContentPage>
