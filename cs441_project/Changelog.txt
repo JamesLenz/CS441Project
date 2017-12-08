@@ -1,3 +1,19 @@
+﻿(Dec 8, 2017)
+Client
+-Added more icons (Send)
+-Added ChatroomItem.cs
+-Added ChatroomMessageItem.cs
+-Added InnerChatroomPage.xaml and InnerChatroomPage.xaml.cs
+    -Heavy work
+-Added NewChatroomPage.xaml and NewChatroomPage.xaml.cs
+    -Heavy work
+Server
+-Added functions (several relating to forum threads and chat)
+-Added ChatroomMessages table to classrooms
+
+
+
+
 (Dec 4, 2017)
 Client
 -Removed Done switch on testPage2 (aka Todo list page)

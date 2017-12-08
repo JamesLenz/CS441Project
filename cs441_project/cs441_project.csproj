@@ -67,6 +67,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewChatroomPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InnerChatroomPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -113,6 +121,14 @@
     <Compile Include="ClassroomDetailsPage.xaml.cs">
       <DependentUpon>ClassroomDetailsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChatroomItem.cs" />
+    <Compile Include="NewChatroomPage.xaml.cs">
+      <DependentUpon>NewChatroomPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InnerChatroomPage.xaml.cs">
+      <DependentUpon>InnerChatroomPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChatroomMessageItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

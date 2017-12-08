@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 using System;
-
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
@@ -26,15 +26,23 @@ namespace cs441_project
             var json = JsonConvert.SerializeObject(item);
             var content = new StringContent(json, Encoding.UTF8, "application/json"); //StringContent contains http headers
 
-            //wait for response, then handle it
-            try
+            int attempts = 0;
+            int maxAttempts = 3;
+            while (attempts < maxAttempts)
             {
-                responseMessage = await App.client.PostAsync(uri, content); //post
-            }
-            catch (Exception ex)
-            {
-                await bindingPage.DisplayAlert("Unexpected Error", ex.Message, "OK");
-                return;
+                //wait for response, then handle it
+                try
+                {
+                    responseMessage = await App.client.PostAsync(uri, content); //post
+                }
+                catch (Exception ex)
+                {
+                    //await bindingPage.DisplayAlert("Unexpected Error", ex.Message, "OK");
+                    //return;
+                    attempts++;
+                    continue;
+                }
+                break;
             }
             if (responseMessage.IsSuccessStatusCode)
             { //success
@@ -266,4 +274,67 @@ namespace cs441_project
         public string Password { get; set; }
     }
 
+    // retrieve user chatrooms
+    public class GetUserChatroomsItem
+    {
+        public readonly string Command = "GET_USER_CHATROOMS";
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    //
+    public class CreateChatroomItem
+    {
+        public CreateChatroomItem()
+        {
+            MemberIds = new List<string>();
+        }
+        public readonly string Command = "CREATE_CHATROOM";
+        public List<string> MemberIds { get; set; }
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    //
+    public class LeaveChatroomItem
+    {
+        public readonly string Command = "LEAVE_CHATROOM";
+        public string ChatroomId { get; set; }
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    //
+    public class GetChatroomMessagesItem
+    {
+        public readonly string Command = "GET_CHATROOM_MESSAGES";
+        public string ChatroomId { get; set; }
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    //
+    public class PostChatroomMessageItem
+    {
+        public readonly string Command = "POST_CHATROOM_MESSAGE";
+        public string ChatroomId { get; set; }
+        public string Message { get; set; }
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
 }

@@ -1,14 +1,14 @@
 ﻿<Properties StartupConfiguration="{0126277C-C1E4-4B1A-8D0D-704DE36CD2F7}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CS441Project_New Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="cs441_project/ChatroomMessageItem.cs">
     <Files>
-      <File FileName="cs441_project/Changelog.txt" Line="6" Column="7" />
-      <File FileName="cs441_project/ServerItems.cs" Line="1" Column="1" />
-      <File FileName="cs441_project/UsersPage.xaml" Line="75" Column="1" />
-      <File FileName="cs441_project/UsersPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="cs441_project/HomePage.xaml" Line="63" Column="1" />
-      <File FileName="cs441_project/HomePage.xaml.cs" Line="1" Column="1" />
-      <File FileName="cs441_project/UserItem.cs" Line="1" Column="1" />
-      <File FileName="CS441Project_New Status" />
+      <File FileName="cs441_project/Changelog.txt" Line="5" Column="2" />
+      <File FileName="cs441_project/ServerItems.cs" Line="339" Column="6" />
+      <File FileName="cs441_project/ChatroomMessageItem.cs" Line="54" Column="37" />
+      <File FileName="cs441_project/testPage3.xaml" Line="52" Column="58" />
+      <File FileName="cs441_project/testPage3.xaml.cs" Line="50" Column="52" />
+      <File FileName="cs441_project/InnerChatroomPage.xaml" Line="39" Column="51" />
+      <File FileName="cs441_project/InnerChatroomPage.xaml.cs" Line="57" Column="13" />
+      <File FileName="cs441_project/cs441_projectPage.xaml.cs" Line="22" Column="46" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.cs441__project.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.CFE51F38-0B2E-47F4-9AA0-49D058F2687F" />
@@ -16,6 +16,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/James/CS441Project_New/cs441_project/cs441_projectPage.xaml" relfile="cs441_project/cs441_projectPage.xaml" line="9" column="33" />
+      <Breakpoint file="/Users/James/CS441Project_New/cs441_project/testPage3.xaml" relfile="cs441_project/testPage3.xaml" line="46" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

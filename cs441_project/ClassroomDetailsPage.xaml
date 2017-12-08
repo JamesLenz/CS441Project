@@ -6,7 +6,7 @@
     BackgroundColor="BlanchedAlmond">
     <StackLayout 
         Orientation="Vertical"
-        Margin="15,0,15,0">
+        Margin="15,5,15,0">
         
         <Label x:Name="testLabel" Text="testLabel" FontSize="10"/>
 

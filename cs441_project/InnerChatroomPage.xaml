@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="cs441_project.InnerChatroomPage"
+    BackgroundColor="BlanchedAlmond">
+    <ScrollView x:Name="PageScrollView">
+    <StackLayout
+        Margin="0,0,0,0">
+        <!--<Frame 
+            Margin="5,0,5,0"
+            Padding="5"
+            HasShadow="false"
+            CornerRadius="3"
+            IsClippedToBounds="true"
+            BackgroundColor="Transparent">-->
+            <ListView
+                BackgroundColor="Transparent"
+                x:Name="ChatroomMessagesListView"
+                SeparatorVisibility="None"
+                HasUnevenRows="true"
+                ItemTapped="OnTapped"
+                IsPullToRefreshEnabled="true"
+                Refreshing="Handle_Refreshing"
+                Margin="10,5,10,0">
+                <ListView.ItemTemplate>
+                <DataTemplate>
+                <ViewCell x:Name="ChatroomItemCell">
+                <ViewCell.View>
+                    <Frame
+                        HasShadow="false"
+                        CornerRadius="3"
+                        Padding="0"
+                        IsClippedToBounds="true"
+                        Margin="{Binding getMargin}"
+                        BackgroundColor="{Binding getBackgroundColor}">
+                        <StackLayout>
+                            <Label
+                                Text="{Binding getCreatorInfo, StringFormat='\{0\}:'}"
+                                TextColor="{Binding getTextColor}"
+                                Margin="5,5,5,0"
+                                FontSize="10"/>
+                            <Label
+                                Text="{Binding Message}"
+                                TextColor="{Binding getTextColor}"
+                                FontSize="14"
+                                Margin="5,0,5,5"
+                                VerticalTextAlignment="Center"
+                                VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                    </Frame>
+                </ViewCell.View>
+                </ViewCell>
+                </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        <!--</Frame>-->
+        <Frame 
+            x:Name="Message_Editor_Frame"
+            HasShadow="true"
+            BackgroundColor="White"
+            CornerRadius="3"
+            HorizontalOptions="FillAndExpand"
+            Padding="5"
+            Margin="15,10,15,10">
+            <StackLayout Orientation="Horizontal">
+                <Editor
+                    x:Name="Message_Editor"
+                    FontSize="12"
+                    HeightRequest="50"
+                    Focused="Handle_Focused"
+                    Unfocused="Handle_Unfocused"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"/>
+                <Button
+                    x:Name="SendButton"
+                    Image="Send_Icon.png"
+                    Clicked="SendButton_OnClicked"
+                    BackgroundColor="Transparent"
+                    FontSize="10"
+                    TextColor="Black"
+                    VerticalOptions="End"
+                    WidthRequest="30"
+                    HeightRequest="25"/>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+    </ScrollView>
+</ContentPage>

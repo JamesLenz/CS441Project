@@ -12,5 +12,51 @@
             iOS="Chat_Icon.png" />
     </ContentPage.Icon>
     
-    <Label Text="Chatrooms"/>
+    <StackLayout
+        Margin="0,0,0,0">
+        <Label 
+            x:Name="testLabel"
+            Text="testLabel"
+            FontSize="10"/>
+        <Frame 
+            Margin="15,0,15,0"
+            Padding="5"
+            HasShadow="false"
+            CornerRadius="3"
+            IsClippedToBounds="true"
+            BackgroundColor="White">
+            <ListView
+                BackgroundColor="Transparent"
+                x:Name="ChatroomListView"
+                SeparatorVisibility="Default"
+                HasUnevenRows="false"
+                IsPullToRefreshEnabled="true"
+                Refreshing="Handle_Refreshing"
+                ItemTapped="OnTapped"
+                Margin="0">
+                <ListView.ItemTemplate>
+                <DataTemplate>
+                <ViewCell x:Name="ChatroomItemCell">
+                <ViewCell.ContextActions>
+                    <MenuItem
+                        Text="Leave"
+                        IsDestructive="true"
+                        Clicked="ChatroomItemCell_OnLeave"/>
+                </ViewCell.ContextActions>
+                <ViewCell.View>
+                    <StackLayout>
+                        <Label
+                            Text="{Binding ListOfMemberNames}"
+                            FontSize="12"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center"
+                            Margin="15,5,0,0"/>
+                    </StackLayout>
+                </ViewCell.View>
+                </ViewCell>
+                </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+    </StackLayout>
 </ContentPage>
