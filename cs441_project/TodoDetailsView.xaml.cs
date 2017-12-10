@@ -40,6 +40,9 @@ namespace cs441_project
             else
             {
                 isNew = true;
+                DueDate_DatePicker.Date = DateTime.Now.Date.AddDays(1);
+                //DueDate_TimePicker.Time = DateTime.Now.TimeOfDay;
+                DueDate_TimePicker.Time = new TimeSpan(0,0,0); //12:00AM next day
             }
                 
 		}

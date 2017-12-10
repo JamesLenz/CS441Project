@@ -172,3 +172,5 @@
 /Users/James/CS441Project_New/cs441_project/obj/Debug/cs441_project.pdb
 /Users/James/CS441Project_New/cs441_project/obj/Debug/cs441_project.NewChatroomPage.xaml.g.cs
 /Users/James/CS441Project_New/cs441_project/obj/Debug/cs441_project.InnerChatroomPage.xaml.g.cs
+/Users/James/CS441Project_New/cs441_project/obj/Debug/cs441_project.InnerForumThreadPage.xaml.g.cs
+/Users/James/CS441Project_New/cs441_project/obj/Debug/cs441_project.ForumPostDetailsPage.xaml.g.cs

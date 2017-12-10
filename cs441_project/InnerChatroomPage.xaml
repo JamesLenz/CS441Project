@@ -7,13 +7,6 @@
     <ScrollView x:Name="PageScrollView">
     <StackLayout
         Margin="0,0,0,0">
-        <!--<Frame 
-            Margin="5,0,5,0"
-            Padding="5"
-            HasShadow="false"
-            CornerRadius="3"
-            IsClippedToBounds="true"
-            BackgroundColor="Transparent">-->
             <ListView
                 BackgroundColor="Transparent"
                 x:Name="ChatroomMessagesListView"
@@ -54,7 +47,6 @@
                 </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        <!--</Frame>-->
         <Frame 
             x:Name="Message_Editor_Frame"
             HasShadow="true"
@@ -68,21 +60,29 @@
                     x:Name="Message_Editor"
                     FontSize="12"
                     HeightRequest="50"
-                    Focused="Handle_Focused"
-                    Unfocused="Handle_Unfocused"
                     BackgroundColor="Transparent"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"/>
                 <Button
                     x:Name="SendButton"
-                    Image="Send_Icon.png"
                     Clicked="SendButton_OnClicked"
                     BackgroundColor="Transparent"
-                    FontSize="10"
+                    FontSize="8"
                     TextColor="Black"
                     VerticalOptions="End"
                     WidthRequest="30"
-                    HeightRequest="25"/>
+                    HeightRequest="25">
+                    <Button.Image>
+                        <OnPlatform
+                            x:TypeArguments="FileImageSource"
+                            iOS="Send_Icon.png" />
+                    </Button.Image>
+                    <Button.Text>
+                        <OnPlatform
+                            x:TypeArguments="x:String"
+                            Android="Send" />
+                    </Button.Text>
+                </Button>
             </StackLayout>
         </Frame>
     </StackLayout>

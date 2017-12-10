@@ -266,7 +266,7 @@ namespace cs441_project
     public class DropUserItem
     {
         public readonly string Command = "DROP_USER";
-        public string DropEmail { get; set; }
+        public string DropId { get; set; }
         //which classroom/database to interact with
         public string DatabaseId { get; set; }
         //validate user's permission
@@ -333,6 +333,98 @@ namespace cs441_project
         public string Message { get; set; }
         //which classroom/database to interact with
         public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    // add  forum to classroom database
+    public class CreateForumThreadItem
+    {
+        public readonly string Command = "CREATE_FORUM_THREAD";
+        //public DateTime DueDateTime { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    // delete a forum item
+    public class DeleteForumThreadItem
+    {
+        public readonly string Command = "DELETE_FORUM_THREAD";
+        public string ThreadId { get; set; }
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    // get forum threads
+    public class GetForumThreadsItem
+    {
+        public readonly string Command = "GET_FORUM_THREADS";
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    // edit forum post item
+    public class EditForumPostItem
+    {
+        public readonly string Command = "EDIT_THREAD_POST";
+        public string Title { get; set; } //if it applies (only first post will use this)
+        public string Content { get; set; }
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //which to post to interact with
+        public string PostId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    //
+    public class DeleteForumPostItem
+    {
+        public readonly string Command = "DELETE_THREAD_POST";
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //which to post to interact with
+        public string PostId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    //
+    public class CreateForumPostItem
+    {
+        public readonly string Command = "CREATE_THREAD_POST";
+        public string Content { get; set; }
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //which to do item to interact with
+        public string ThreadId { get; set; }
+        //validate user's permission
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    //
+    public class GetForumPostsItem
+    {
+        public readonly string Command = "GET_THREAD_POSTS";
+        //which classroom/database to interact with
+        public string DatabaseId { get; set; }
+        //which to do item to interact with
+        public string ThreadId { get; set; }
         //validate user's permission
         public string Email { get; set; }
         public string Password { get; set; }

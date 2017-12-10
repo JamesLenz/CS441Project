@@ -14,26 +14,22 @@
     
     <StackLayout
         Margin="0,0,0,0">
-        <Label 
-            x:Name="testLabel"
-            Text="testLabel"
-            FontSize="10"/>
-        <Frame 
+        <!--<Frame 
             Margin="15,0,15,0"
             Padding="5"
             HasShadow="false"
             CornerRadius="3"
             IsClippedToBounds="true"
-            BackgroundColor="White">
+            BackgroundColor="Transparent">-->
             <ListView
                 BackgroundColor="Transparent"
                 x:Name="ChatroomListView"
-                SeparatorVisibility="Default"
-                HasUnevenRows="false"
+                SeparatorVisibility="None"
+                HasUnevenRows="true"
                 IsPullToRefreshEnabled="true"
                 Refreshing="Handle_Refreshing"
                 ItemTapped="OnTapped"
-                Margin="0">
+                Margin="15,15,15,0">
                 <ListView.ItemTemplate>
                 <DataTemplate>
                 <ViewCell x:Name="ChatroomItemCell">
@@ -45,18 +41,29 @@
                 </ViewCell.ContextActions>
                 <ViewCell.View>
                     <StackLayout>
-                        <Label
-                            Text="{Binding ListOfMemberNames}"
-                            FontSize="12"
-                            VerticalOptions="CenterAndExpand"
-                            VerticalTextAlignment="Center"
-                            Margin="15,5,0,0"/>
+                        <Frame
+                            BackgroundColor="White"
+                            HasShadow="false"
+                            Padding="5"
+                            HeightRequest="40"
+                            OutlineColor="#cccccc"
+                            CornerRadius="3"
+                            Margin="0,1,0,0">
+                            <StackLayout>
+                                <Label
+                                    Text="{Binding ListOfMemberNames}"
+                                    FontSize="12"
+                                    VerticalOptions="CenterAndExpand"
+                                    VerticalTextAlignment="Center"
+                                    Margin="15,5,0,0"/>
+                            </StackLayout>
+                        </Frame>
                     </StackLayout>
                 </ViewCell.View>
                 </ViewCell>
                 </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </Frame>
+        <!--</Frame>-->
     </StackLayout>
 </ContentPage>

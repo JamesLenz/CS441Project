@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="cs441_project.InnerForumThreadPage"
+    BackgroundColor="BlanchedAlmond">
+    <StackLayout
+        Margin="0,0,0,0">
+            <ListView
+                BackgroundColor="Transparent"
+                x:Name="ForumPostsListView"
+                SeparatorVisibility="None"
+                HasUnevenRows="true"
+                ItemTapped="OnTapped"
+                IsPullToRefreshEnabled="true"
+                Refreshing="Handle_Refreshing"
+                Margin="15,15,15,0">
+                <ListView.ItemTemplate>
+                <DataTemplate>
+                <ViewCell x:Name="ForumPostItemCell">
+                <ViewCell.View>
+                    <Frame
+                        BackgroundColor="White"
+                        HasShadow="false"
+                        Padding="5"
+                        OutlineColor="#cccccc"
+                        CornerRadius="3"
+                        Margin="0,0,0,0">
+                        <StackLayout>
+                            <StackLayout 
+                                Orientation="Horizontal"
+                                VerticalOptions="Start">
+                                <Label
+                                    Text="{Binding CreatorName, StringFormat='Posted by: \{0\}'}" 
+                                    FontSize="10"
+                                    TextColor="#888"
+                                    Margin="0,0,0,0"/>
+                                <Label
+                                    IsVisible="{Binding curUserIsCreator}" 
+                                    Text="(You)"
+                                    FontSize="10"
+                                    FontAttributes="Bold"
+                                    TextColor="#66f"
+                                    Margin="-5,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label
+                                    Text="{Binding Content}"
+                                    FontSize="14"/>
+                            </StackLayout>
+                            <StackLayout 
+                                VerticalOptions="End">
+                                <Label 
+                                    Text="{Binding LastEditDateTime, StringFormat='\Posted on{0: MMMM dd, yyyy a\\t h:mm tt\}'}" 
+                                    IsVisible="{Binding notEdited}"
+                                    FontSize="10"
+                                    TextColor="#888"
+                                    HorizontalOptions="End"
+                                    Margin="0,0,0,0"/>
+                                <Label 
+                                    Text="{Binding LastEditDateTime, StringFormat='\Last edited on{0: MMMM dd, yyyy a\\t h:mm tt\}'}" 
+                                    IsVisible="{Binding isEdited}"
+                                    FontSize="10"
+                                    TextColor="#888"
+                                    HorizontalOptions="End"
+                                    Margin="0,0,0,0"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </ViewCell.View>
+                </ViewCell>
+                </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+    </StackLayout>
+</ContentPage>

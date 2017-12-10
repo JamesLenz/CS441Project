@@ -73,7 +73,6 @@ namespace cs441_project
 
             sts.send(uri, item, async () => 
             {
-                testLabel.Text = sts.responseItem.Data;
                 await DisplayAlert("Email Sent", sts.responseItem.Response, "OK");
             });
 		}

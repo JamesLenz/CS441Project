@@ -75,6 +75,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="ForumPostDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InnerForumThreadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -129,6 +137,14 @@
       <DependentUpon>InnerChatroomPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChatroomMessageItem.cs" />
+    <Compile Include="ForumThreadItem.cs" />
+    <Compile Include="ForumPostDetailsPage.xaml.cs">
+      <DependentUpon>ForumPostDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InnerForumThreadPage.xaml.cs">
+      <DependentUpon>InnerForumThreadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ForumPostItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

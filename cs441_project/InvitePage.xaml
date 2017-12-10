@@ -3,8 +3,6 @@
     <StackLayout
         Spacing="3"
         BackgroundColor="BlanchedAlmond">
-        <Label Text="testLabel" FontSize="10" x:Name="testLabel"/>
-
         <Frame
             BackgroundColor="White"
             Margin="25,25,25,25"

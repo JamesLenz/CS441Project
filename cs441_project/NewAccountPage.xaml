@@ -5,7 +5,6 @@
         <StackLayout
         Spacing="3"
         BackgroundColor="BlanchedAlmond">
-            <Label x:Name="testLabel" Text="testLabel" FontSize="10"/>
             <Frame
                 BackgroundColor="White"
                 Margin="25,25,25,25"

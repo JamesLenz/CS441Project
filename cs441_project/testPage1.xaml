@@ -12,8 +12,78 @@
             iOS="Forum_Icon.png" />
     </ContentPage.Icon>
 
-    <StackLayout>
-        <Label Text="Forum"/>
+    <StackLayout Margin="0,0,0,0">
+        <ListView 
+            BackgroundColor="BlanchedAlmond"
+            x:Name="ForumListView" 
+            SeparatorVisibility="None"
+            HasUnevenRows="true"
+            ItemTapped="OnSelect"
+            IsPullToRefreshEnabled="true"
+            Refreshing="Handle_Refreshing"
+            Margin="15,15,15,0">
+            <ListView.ItemTemplate>
+            <DataTemplate>
+            <ViewCell 
+                x:Name="ForumThreadItemCell" 
+                BindingContextChanged="ForumThreadItem_BindingContextChanged">
+            <ViewCell.View>
+                <StackLayout>
+                    <Frame
+                        BackgroundColor="White"
+                        HasShadow="false"
+                        Padding="5"
+                        OutlineColor="#cccccc"
+                        CornerRadius="3"
+                        Margin="0,0,0,0">
+                        <StackLayout>
+                            <StackLayout
+                                IsClippedToBounds="true"
+                                MinimumHeightRequest="0">
+                                <Label
+                                    Text="{Binding Title}" 
+                                    FontAttributes="Bold"
+                                    Margin="0,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout 
+                                Orientation="Horizontal"
+                                VerticalOptions="End">
+                                <Label
+                                    Text="{Binding CreatorName, StringFormat='Created by: \{0\}'}" 
+                                    FontSize="10"
+                                    TextColor="#888"
+                                    Margin="0,0,0,0"/>
+                                <Label
+                                    IsVisible="{Binding curUserIsCreator}" 
+                                    Text="(You)"
+                                    FontSize="10"
+                                    FontAttributes="Bold"
+                                    TextColor="#66f"
+                                    Margin="-5,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout 
+                                Orientation="Horizontal" 
+                                VerticalOptions="End">
+                                <Label 
+                                    Text="{Binding NumberOfPosts, StringFormat='\{0\} Posts'}" 
+                                    FontSize="10"
+                                    TextColor="#888"
+                                    HorizontalOptions="StartAndExpand"
+                                    Margin="0,0,0,0"/>
+                                <Label 
+                                    Text="{Binding LastPostDateTime, StringFormat='\Last post on{0: MMMM dd, yyyy a\\t h:mm tt\}'}" 
+                                    FontSize="10"
+                                    TextColor="#888"
+                                    HorizontalOptions="End"
+                                    Margin="0,0,0,0"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ViewCell.View>
+            </ViewCell>
+            </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
-    
     </ContentPage>

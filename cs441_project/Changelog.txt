@@ -1,4 +1,23 @@
-﻿(Dec 8, 2017)
+﻿(Dec 10, 2017) PROJECT DONE
+Client
+-Added ForumPostItem.cs
+-Added ForumThreadItem.cs
+-Added InnerForumThreadPage.xaml and InnerForumThreadPage.xaml.cs
+    -Heavy work
+-Added ForumPostDetailsPage.xaml and ForumPostDetailsPage.xaml.cs
+    -Heavy work
+-Heavy work on testPage1.xaml and testPage1.xaml.cs
+-Code cleanup
+-Removed testLabel Labels on all pages
+-UI consistency checking
+Server
+-Bug fixes, didn't remove user from Members table when executing drop_user and leave_classroom
+-Added remaining functions
+
+
+
+
+(Dec 8, 2017)
 Client
 -Added more icons (Send)
 -Added ChatroomItem.cs
@@ -147,20 +166,3 @@ Server
         }'
     -Updated functions in "index.py" to return data in this way
 -Fixed double quotes in strings causing errors in JSON, replaces double quotes with proper escape character
-
-
-
-
-
-
-
-
-Login Page = Done (Login verification, Forgot password, New account)
-Home Page = 70% done (Retrieves, displays, allows creation of user's classrooms)
-    needs creation page to edit details
-    need to add simple classroom entry point
-Todo List Page = 80% Done (Retrieves, displays, allows creation of classroom's todo items)
-    need to sort it
-    some small features to add
-Server = 80% Done (mySQL Database setup, Apache setup, mod_wsgi setup, python installed, proper entry point and command interpreter and response)
-    a few commands are not implemented yet

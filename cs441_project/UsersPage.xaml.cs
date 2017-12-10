@@ -84,7 +84,7 @@ namespace cs441_project
             item.DatabaseId = App.curClassroom.Id;
             item.Email      = App.userEmail;
             item.Password   = App.userPassword;
-            item.DropEmail  = selectedUser.Email;
+            item.DropId     = selectedUser.Id;
 
             sts.send(uri, item, async () => 
             {

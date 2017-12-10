@@ -71,7 +71,6 @@ namespace cs441_project
         {
             _ClassroomListViewItems.Clear();
             GetMyClassrooms();
-            testLabel.Text = "Refreshed";
             ClassroomListView.IsRefreshing = false;
         }
 

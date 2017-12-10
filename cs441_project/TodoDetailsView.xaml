@@ -8,9 +8,6 @@
         <StackLayout 
             Orientation="Vertical"
             Margin="15,0,15,0">
-            
-            <Label x:Name="testLabel" Text="testLabel" FontSize="10"/>
-
             <Label 
                 Text="Title" 
                 FontSize="16"

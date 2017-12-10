@@ -45,7 +45,7 @@ namespace cs441_project
             ((ListView)sender).SelectedItem = null;
         }
 
-        public void Handle_Refreshing(object sender, System.EventArgs e)
+        public void Handle_Refreshing(object sender, EventArgs e)
         {
             _ChatroomMessagesListViewItems.Clear();
             GetMyChatroomMessagesItems();

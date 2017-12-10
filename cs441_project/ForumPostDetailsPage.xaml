@@ -2,20 +2,23 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="cs441_project.ClassroomDetailsPage"
+    x:Class="cs441_project.ForumPostDetailsPage"
     BackgroundColor="BlanchedAlmond">
-    <StackLayout 
+   <StackLayout
         Orientation="Vertical"
-        Margin="15,5,15,0">
+        Margin="15,15,15,0">
+        <StackLayout
+            x:Name="Title_StackLayout"
+            Margin="0">
         <Label 
             Text="Title" 
             FontSize="16"
             FontAttributes="Bold"/>
         <Entry 
             x:Name="Title_Entry"
-            Placeholder="Title"
             HeightRequest="45"
-            TextChanged="TitleEntry_TextChanged"/>
+            TextChanged="TitleEntry_TextChanged"
+            Placeholder="Title"/>
         <Label
             Text="?/?"
             x:Name="TitleCounter_Label"
@@ -24,9 +27,11 @@
             TextColor="#ccc"
             Margin="0,-20,5,0"
             HorizontalOptions="End"/>
+        </StackLayout>
         <Label 
-            Text="Description" 
+            Text="Forum post" 
             FontSize="16" 
+            Margin="0,10,0,0"
             FontAttributes="Bold"/>
         <Frame
             HasShadow="false"
@@ -34,13 +39,14 @@
             CornerRadius="3"
             BackgroundColor="BlanchedAlmond"
             IsClippedToBounds="true"
+            Margin="0,-5,0,0"
             Padding="0">
             <StackLayout>
                 <Editor 
                     x:Name="Description_Editor"
                     FontSize="14"
                     TextChanged="DescriptionEditor_TextChanged"
-                    HeightRequest="100"/>
+                    HeightRequest="200"/>
                 <Label
                     Text="?/?"
                     x:Name="DescriptionCounter_Label"

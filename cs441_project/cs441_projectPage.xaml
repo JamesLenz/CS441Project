@@ -56,7 +56,6 @@
                     </OnPlatform>
                 </Label.FontFamily>
             </Label>
-            <Label x:Name="testLabel" Text="test" FontSize="10"/>
             <Entry
                 x:Name="Email_Entry"
                 Style="{StaticResource EntryBoxStyle}"

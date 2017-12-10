@@ -14,21 +14,15 @@
 
     <StackLayout
         Margin="0,0,0,0">
-
-        <Label x:Name="testLabel" Text="testLabel" FontSize="10"/>
-        
         <ListView 
-            BackgroundColor="BlanchedAlmond"
+            BackgroundColor="Transparent"
             x:Name="TodoListView" 
             SeparatorVisibility="None"
             HasUnevenRows="true"
             ItemTapped="OnSelect"
             IsPullToRefreshEnabled="true"
             Refreshing="Handle_Refreshing"
-            Margin="15,0,15,0">
-            <ListView.Margin>
-
-            </ListView.Margin>
+            Margin="15,15,15,0">
             <ListView.ItemTemplate>
             <DataTemplate>
             <ViewCell x:Name="TodoItemCell">
@@ -47,7 +41,7 @@
                                 MinimumHeightRequest="0">
                                 <Label 
                                     Text="{Binding DueDateTime, StringFormat='{}{0:\\D\\u\\e \\o\\n MMMM dd, yyyy a\\t h:mm tt}'}" 
-                                    FontSize="12"
+                                    FontSize="10"
                                     TextColor="#888888"
                                     IsVisible="{Binding HasDueDate}"
                                     Margin="0,0,0,0"/>
@@ -80,7 +74,7 @@
                                 <!--Text="{Binding CreatedDateTime, StringFormat='{}{0:\\P\\o\\s\\t\\e\\d \\o\\n MMMM dd, yyyy a\\t h:mm tt}'}" -->
                                 <Label 
                                     Text="{Binding CreatedDateTime, StringFormat='Posted on \{0:MMMM dd, yyyy \\a\\t h:mm tt\}'}" 
-                                    FontSize="12"
+                                    FontSize="10"
                                     IsVisible="{Binding notEdited}"
                                     TextColor="#888888"
                                     HorizontalOptions="End"
@@ -88,7 +82,7 @@
                                     Margin="0,0,0,0"/>
                                 <Label 
                                     Text="{Binding LastEditDateTime, StringFormat='Last edited on \{0:MMMM dd, yyyy \\a\\t h:mm tt\}'}" 
-                                    FontSize="12"
+                                    FontSize="10"
                                     IsVisible="{Binding isEdited}"
                                     TextColor="#888888"
                                     HorizontalOptions="End"
