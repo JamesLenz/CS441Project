@@ -1,10 +1,8 @@
 ﻿<Properties StartupConfiguration="{0126277C-C1E4-4B1A-8D0D-704DE36CD2F7}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="CS441Project_New Status">
     <Files>
-      <File FileName="cs441_project/Changelog.txt" Line="9" Column="22" />
-      <File FileName="cs441_project/TodoDetailsView.xaml.cs" Line="28" Column="23" />
-      <File FileName="cs441_project/ForumPostDetailsPage.xaml" Line="12" Column="23" />
-      <File FileName="cs441_project/TodoDetailsView.xaml" Line="89" Column="15" />
+      <File FileName="cs441_project/ServerItems.cs" Line="382" Column="1" />
+      <File FileName="cs441_project/ForumPostDetailsPage.xaml.cs" Line="87" Column="55" />
       <File FileName="CS441Project_New Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>

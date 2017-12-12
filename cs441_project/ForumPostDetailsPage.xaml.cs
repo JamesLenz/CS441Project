@@ -8,8 +8,6 @@ using System.Net.Http;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-
-
 namespace cs441_project
 {
     public partial class ForumPostDetailsPage : ContentPage
@@ -84,6 +82,12 @@ namespace cs441_project
                 return;
             }
 
+            if (Description_Editor.Text == null || Description_Editor.Text == "")
+            {
+                await DisplayAlert("Error: Description", "Please enter a description", "OK");
+                return;
+            }
+
             object item;
             if (isNewThread)
             {
@@ -105,6 +109,8 @@ namespace cs441_project
                 temp_item.PostId      = post.Id;
                 temp_item.Email       = App.userEmail;
                 temp_item.Password    = App.userPassword;
+
+                thread.Title = temp_item.Title;
 
                 item = temp_item;
             }

@@ -95,7 +95,7 @@ namespace cs441_project
     //=======================//
     //     Command Items     //
     //=======================//
-
+    
     // check if email and password are in the database
     public class ValidateUserItem
     {
