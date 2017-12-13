@@ -39,7 +39,7 @@ namespace cs441_project
             _ContainerPage.Title = "Forums";
 
             Handle_Refreshing(null, null);
-            Handle_Refreshing(null, null);
+            //Handle_Refreshing(null, null);
         }
 
         public async void ToolbarItem_OnAdd()
