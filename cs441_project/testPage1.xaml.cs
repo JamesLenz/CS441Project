@@ -39,6 +39,7 @@ namespace cs441_project
             _ContainerPage.Title = "Forums";
 
             Handle_Refreshing(null, null);
+            Handle_Refreshing(null, null);
         }
 
         public async void ToolbarItem_OnAdd()
@@ -79,7 +80,8 @@ namespace cs441_project
                         var forumItemList = JsonConvert.DeserializeObject<List<ForumThreadItem>>(sts.responseItem.Data);
                         for (int i = 0; i < forumItemList.Count; i++)
                         {
-                            _ForumListViewItems.Add(forumItemList[i]);
+                            if (!_ForumListViewItems.Contains(forumItemList[i]))
+                                _ForumListViewItems.Add(forumItemList[i]);
                         }
                     }
                 }

@@ -17,9 +17,6 @@ namespace cs441_project
             InitializeComponent();
 
             sts = new SendToServer(this);
-
-            Email_Entry.Text = "admin2";
-            Password_Entry.Text = "password";
         }
 
 		async void Login_Clicked(object sender, System.EventArgs e)

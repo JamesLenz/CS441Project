@@ -1,9 +1,10 @@
 ﻿<Properties StartupConfiguration="{0126277C-C1E4-4B1A-8D0D-704DE36CD2F7}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CS441Project_New Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="cs441_project/testPage1.xaml.cs">
     <Files>
-      <File FileName="cs441_project/ServerItems.cs" Line="382" Column="1" />
-      <File FileName="cs441_project/ForumPostDetailsPage.xaml.cs" Line="87" Column="55" />
-      <File FileName="CS441Project_New Status" />
+      <File FileName="cs441_project/ServerItems.cs" Line="42" Column="32" />
+      <File FileName="cs441_project/ForumPostDetailsPage.xaml.cs" Line="21" Column="9" />
+      <File FileName="cs441_project/cs441_projectPage.xaml.cs" Line="19" Column="42" />
+      <File FileName="cs441_project/testPage1.xaml.cs" Line="41" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.cs441__project.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.CFE51F38-0B2E-47F4-9AA0-49D058F2687F" />
