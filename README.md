@@ -12,29 +12,35 @@ Our primary target customers are students and instructors in higher level educat
 </p>
 
 <h1>Objectives</h1>
-<p>
-● To provide a mobile application which functions as a classroom chat and learning management system
-● Implement an easy to use and friendly user interface
-● Provide users the ability to create accounts and manage profile settings
-● Implement a form of classroom role differentiation to allow users different privileges based on role
-  ○ Instructors have administrative control
-● Allow users to interact through private, group, and course wide chat rooms and forums
-● Application communicates with server to retrieve and post information
-  ○ The application will store and the user’s username, password, email address, involved classes and their permissions level, all of a classroom’s involved messages (forums, alerts, etc), as well as created groups and their respective messages
-</p>
+<ul>
+  <li>To provide a mobile application which functions as a classroom chat and learning management system</li>
+  <li>Implement an easy to use and friendly user interface</li>
+  <li>Provide users the ability to create accounts and manage profile settings</li>
+  <li>Implement a form of classroom role differentiation to allow users different privileges based on role</li>
+    <ul>
+      <li>Instructors have administrative control</li>
+    </ul>
+  <li>Allow users to interact through private, group, and course wide chat rooms and forums</li>
+  <li>Application communicates with server to retrieve and post information</li>
+    <ul>
+      <li>The application will store and the user’s username, password, email address, involved classes and their permissions level, all of a classroom’s involved messages (forums, alerts, etc), as well as created groups and their respective messages</li>
+    </ul>
+</ul>
 
 <h1>Features</h1>
-<p>
-● User accounts and profiles
-● Select / Create classroom server Interface
-● User that creates a new classroom server will manage it with administrative controls
-  ○ Instructor / Admin can invite other students to classroom server with a code (send them a code)
-● Each class will require a class code to enter
-● For each “classroom” all members of that class will be visible from a “Users/Members” view
-● Group messaging / Chatrooms
-● To-do area for instructor / administrator to easily relay time sensitive information such as assignments to all users
-● Forum functionality and restrictions
-</p>
+<ul>
+  <li>User accounts and profiles</li>
+  <li>Select / Create classroom server Interface</li>
+  <li>User that creates a new classroom server will manage it with administrative controls</li>
+    <ul>
+      <li>Instructor / Admin can invite other students to classroom server with a code (send them a code)</li>
+    </ul>
+  <li>Each class will require a class code to enter</li>
+  <li>For each “classroom” all members of that class will be visible from a “Users/Members” view</li>
+  <li>Group messaging / Chatrooms</li>
+  <li>To-do area for instructor / administrator to easily relay time sensitive information such as assignments to all users</li>
+  <li>Forum functionality and restrictions</li>
+</ul>
 
 <h1>Architectural Diagram</h1>
 <img src="https://github.com/JamesLenz/CS441Project/blob/master/images/Architectural%20Diagram.png?raw=true" alt="Architectural Diagram">
@@ -43,11 +49,11 @@ Our primary target customers are students and instructors in higher level educat
 <img src="https://github.com/JamesLenz/CS441Project/blob/master/images/ERD.png?raw=true" alt="Architectural Diagram">
 
 <style>
-img {max-width:30%}
+img {width:30%; height:30%;}
 </style>
 
 <h1>Application Screenshots</h1>
-<img width="200" src="https://github.com/JamesLenz/CS441Project/blob/master/images/Login.png?raw=true" alt="Login">
+<img src="https://github.com/JamesLenz/CS441Project/blob/master/images/Login.png?raw=true" alt="Login">
 <img src="https://github.com/JamesLenz/CS441Project/blob/master/images/Create%20Account.png?raw=true" alt="Create Account">
 <img src="https://github.com/JamesLenz/CS441Project/blob/master/images/My%20Classrooms.png?raw=true" alt="My Classrooms">
 <img src="https://github.com/JamesLenz/CS441Project/blob/master/images/Create%20or%20Edit%20Classroom.png?raw=true" alt="Create or Edit Classroom">
