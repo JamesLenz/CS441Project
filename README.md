@@ -49,18 +49,18 @@ Our primary target customers are students and instructors in higher level educat
 <img src="https://github.com/JamesLenz/CS441Project/blob/master/images/ERD.png?raw=true" alt="Architectural Diagram">
 
 <h1>Application Screenshots</h1>
-<img width="20%" height="20%" float="left" src="https://github.com/JamesLenz/CS441Project/blob/master/images/Login.png?raw=true" alt="Login">
-<img width="20%" height="20%" float="left" src="https://github.com/JamesLenz/CS441Project/blob/master/images/Create%20Account.png?raw=true" alt="Create Account">
-<img width="20%" height="20%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/My%20Classrooms.png?raw=true" alt="My Classrooms">
-<img width="20%" height="20%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Create%20or%20Edit%20Classroom.png?raw=true" alt="Create or Edit Classroom">
-<img width="20%" height="20%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Join%20Classroom.png" alt="Join Classroom">
-<img width="20%" height="20%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Forum%20Threads.png?raw=true" alt="Forum Threads">
-<img width="20%" height="20%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Create%20or%20Edit%20Thread.png?raw=true" alt="Create or Edit Thread">
-<img width="20%" height="20%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Forum%20Posts.png?raw=true" alt="Forum Posts">
-<img width="20%" height="20%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Todo%20List.png?raw=true" alt="Todo List">
-<img width="20%" height="20%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Create%20or%20Edit%20Todo%20Item.png?raw=true" alt="Create or Edit Todo Item">
-<img width="20%" height="20%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Chatrooms.png?raw=true" alt="Chatrooms">
-<img width="20%" height="20%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Create%20Chatroom.png?raw=true" alt="Create Chatroom">
-<img width="20%" height="20%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Chatroom%20Messages.png?raw=true" alt="Chatroom Messages">
-<img width="20%" height="20%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/People.png?raw=true" alt="People">
-<img width="20%" height="20%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Invite.png?raw=true" alt="Invite">
+<img width="30%" height="30%" src="https://github.com/JamesLenz/CS441Project/blob/master/images/Login.png?raw=true" alt="Login">
+<img width="30%" height="30%" src="https://github.com/JamesLenz/CS441Project/blob/master/images/Create%20Account.png?raw=true" alt="Create Account">
+<img width="30%" height="30%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/My%20Classrooms.png?raw=true" alt="My Classrooms">
+<img width="30%" height="30%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Create%20or%20Edit%20Classroom.png?raw=true" alt="Create or Edit Classroom">
+<img width="30%" height="30%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Join%20Classroom.png" alt="Join Classroom">
+<img width="30%" height="30%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Forum%20Threads.png?raw=true" alt="Forum Threads">
+<img width="30%" height="30%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Create%20or%20Edit%20Thread.png?raw=true" alt="Create or Edit Thread">
+<img width="30%" height="30%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Forum%20Posts.png?raw=true" alt="Forum Posts">
+<img width="30%" height="30%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Todo%20List.png?raw=true" alt="Todo List">
+<img width="30%" height="30%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Create%20or%20Edit%20Todo%20Item.png?raw=true" alt="Create or Edit Todo Item">
+<img width="30%" height="30%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Chatrooms.png?raw=true" alt="Chatrooms">
+<img width="30%" height="30%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Create%20Chatroom.png?raw=true" alt="Create Chatroom">
+<img width="30%" height="30%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Chatroom%20Messages.png?raw=true" alt="Chatroom Messages">
+<img width="30%" height="30%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/People.png?raw=true" alt="People">
+<img width="30%" height="30%"src="https://github.com/JamesLenz/CS441Project/blob/master/images/Invite.png?raw=true" alt="Invite">
